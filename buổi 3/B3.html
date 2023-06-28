@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form class="container">
+        <div style="padding: 8px 0 ; display: flex;">
+            <label for="user" style="min-width:200px;" >User:</label>
+            <input type="text"  style="flex:1;" id="user" required><br>
+        </div>
+        <div style="padding: 8px 0 ; display: flex;">
+            <label for="password" style="min-width:200px;" >Password:</label>
+            <input type="password"  style="flex:1;" id="password" required><br>
+        </div>
+        <div style="padding: 8px 0 ; display: flex;">
+            <label for="city" style="min-width:200px;">City Of Employment:</label>
+            <input type="text" style="flex:1;" id="password"  id="city" required><br>
+        </div>
+        <div style="padding: 8px 0 ; display: flex;">
+        <label for="webserver" style="min-width:200px;">Web Server:</label>
+        <select id="webserver" style="flex:1;" required>
+          <option value="">-- Select Web Server --</option>
+          <option value="apache">Apache</option>
+          <option value="nginx">Nginx</option>
+          <option value="iis">IIS</option>
+        </select><br>
+        </div>
+        <div style="padding: 8px 0 ; display: flex;">
+            <label for="single-sign" style="padding-top: 50px; max-width: 160px;">Please Specify Your Role:</label>
+            <ul style="list-style: none;">
+                <li >
+                    <input type="radio" name="single-sign" id="single-sign-yes" value="yes">
+                    <label for="single-sign-yes">Admin</label>
+                </li>
+                <li>
+                     <input type="radio" name="single-sign" id="single-sign-yes" value="yes">
+                    <label for="single-sign-yes">Engineer</label>
+                </li>
+                <li>
+                    <input type="radio" name="single-sign" id="single-sign-yes" value="yes">
+                   <label for="single-sign-yes">Manager</label>
+               </li>
+               <li>
+                <input type="radio" name="single-sign" id="single-sign-yes" value="yes">
+               <label for="single-sign-yes">Guest</label>
+           </li>
+            </ul>
+        </div>
+        <div style="padding: 8px 0 ; display: flex;">
+            <label for="single-sign" style="padding-top: 30px; max-width: 160px;">Single Sign On The Following:</label>
+            <ul style="list-style: none;">
+                <li >
+                    <input type="checkbox" name="single-sign" id="single-sign-yes" value="yes">
+                    <label for="single-sign-yes">Email</label>
+                </li>
+                <li>
+                     <input type="checkbox" name="single-sign" id="single-sign-yes" value="yes">
+                    <label for="single-sign-yes">Payroll</label>
+                </li>
+                <li>
+                    <input type="checkbox" name="single-sign" id="single-sign-yes" value="yes">
+                   <label for="single-sign-yes">Self-service</label>
+               </li>
+            </ul>
+        </div>
+      
+      <div style="text-align: center;">
+        <button>Login</button>
+        <button>Reset</button>
+      </div>
+    </form>
+      
+</body>
+</html>

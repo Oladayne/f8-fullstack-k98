@@ -1,0 +1,12 @@
+
+img{
+    border-radius: 50%;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+h1{
+  text-align: center;  
+}
