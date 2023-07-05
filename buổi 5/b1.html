@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Lobster&display=swap" rel="stylesheet">
+
+    <style>
+        body{
+            font-family: 'Lato', sans-serif;
+        }
+      .input-container {
+        display: flex;
+        width: 100%;
+        margin-bottom: 15px;
+        position: relative;
+      }
+
+      .input-container::after {
+        background-color: #333;
+        color: #ffffff;
+        display: none;
+        padding: 15px 25px;
+        position: absolute;
+        text-align: center;
+        z-index: 999;
+        top: 0;
+        left: 110px;
+        transform: translate(-50%, calc(-100% - 10px));
+      }
+
+      .input-container.name::after {
+        content: 'Your name';
+      }
+
+      .input-container.email::after {
+        content: 'Your Email';
+      }
+
+      .input-container.phone::after {
+        content: 'Your phone';
+      }
+
+      .input-container.subject::after {
+        content: 'Your subject';
+      }
+
+      .input-container.mes::after {
+        content: 'Your text';
+      }
+
+      .input-container::before {
+        background-color: #333;
+        content: ' ';
+        display: none;
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        z-index: 999;
+        top: 0;
+        left: 80px;
+        transform: translate(-50%, calc(-100% - 5px)) rotate(45deg);
+      }
+
+      input[type=text],
+      select,
+      textarea {
+        width: 100%;
+      }
+
+      .icon {
+        padding: 10px;
+        background: dodgerblue;
+        color: white;
+        min-width: 50px;
+        text-align: center;
+      }
+
+      .input-field {
+        width: 100%;
+        padding: 10px;
+        outline: none;
+        position: relative;
+      }
+
+      .input-field:focus {
+        border: 2px solid dodgerblue;
+      }
+
+      .btn {
+        background-color: dodgerblue;
+        color: white;
+        padding: 15px 20px;
+        border: none;
+        cursor: pointer;
+        display: inline;
+        width: 20%;
+        opacity: 0.9;
+      }
+
+      input[type=submit] {
+        background-color: dodgerblue;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        opacity: 1;
+      }
+
+      .sub {
+        display: flex;
+      }
+
+      input[type=submit] {
+        margin-left: auto;
+      }
+
+      .input-container:focus-within i {
+        background-color: rgb(42, 42, 255);
+      }
+
+      .input-container:focus-within::after {
+        display: block;
+      }
+
+      .input-container:focus-within::before {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1 style="font-family: 'Lobster', cursive;">Hey there</h1>
+    </header>
+    <section>
+      <p><span style="color: red;">We'd like to here from you.</span> Send us or message or just say hy with our contact form or directly via phone, we love to chat.</p>
+      <form>
+        <div class="input-container name">
+          <i class="fa fa-user icon"></i>
+          <input class="input-field" type="text" placeholder="Username" name="usrnm">
+        </div>
+        <div class="input-container email">
+          <i class="fa fa-envelope icon"></i>
+          <input class="input-field" type="text" placeholder="Email" name="email">
+        </div>
+        <div class="input-container phone">
+            <i class="fa-solid fa-phone icon"></i>
+          <input class="input-field" type="tel" placeholder="+ 44 00 123" name="psw">
+        </div>
+        <div class="input-container subject">
+            <i class=" fa-solid fa-book icon"></i>
+          <input class="input-field" type="text" placeholder="Subject" name="psw">
+        </div>
+        <div class="input-container mes">
+            <i class="fa-solid fa-message icon"></i>
+          <textarea class="input-field" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+        </div>
+        <div class="sub">
+          <input type="checkbox">
+          <p>send me ...</p>
+          <input type="submit" value="Send">
+        </div>
+      </form>
+    </section>
+  </body>
+</html>

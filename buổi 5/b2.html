@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .fa-minus{
+            display: none;
+        }
+        i{
+            padding: 0px 15px;
+        }
+        .content-1,.content-2, .content-3{
+            display: none;
+            padding-left: 10px;
+        }
+        .content-1 p,.content-2 p, .content-3 p{
+           
+            padding-left: 10px;
+        }
+        input:nth-of-type(1):checked ~ .content-1, 
+        input:nth-of-type(1):checked ~ .red > label > i.fa-minus,
+        input:nth-of-type(2):checked ~ .content-2, 
+        input:nth-of-type(2):checked ~ .green > label > i.fa-minus,
+        input:nth-of-type(3):checked ~ .content-3, 
+        input:nth-of-type(3):checked ~ .blue > label > i.fa-minus
+
+        {
+            display: inline;
+        }
+        
+        input:nth-of-type(1):checked ~ .red > label > i.fa-plus ,
+        input:nth-of-type(2):checked ~ .green > label > i.fa-plus,
+        input:nth-of-type(3):checked ~ .blue > label > i.fa-plus
+        {
+            display: none;
+        }
+        input[type="checkbox"]{
+            display: none;
+        }
+        .red p ,.green p , .blue p {
+            display: inline-block;
+           
+        }
+        .topic{
+            color: aliceblue;
+            background-color: orangered;
+           
+            margin-bottom: 20px;
+        }
+        label{
+            display: block;
+            cursor: pointer;
+        }
+        
+        ol li {
+          margin-left: -10px;
+
+        }
+        ol  {
+          list-style:decimal')';
+        }
+    </style>
+</head>
+<body>
+    <input type="checkbox" name="text" id="red">
+    <input type="checkbox" name="text" id="green">
+    <input type="checkbox" name="text" id="blue">
+    <div class="red topic">
+        <label for="red">
+            <i class="fa-solid fa-plus"></i>  
+            <i class="minus fa-solid fa-minus"></i>   
+            <p>How to set rand om colors?</p>
+        </label>
+            
+    </div>
+    <div class="content-1">
+      To set randoms colors:
+       <ol>
+        <li>Add faq-random-colors class</li>
+        <li>To change color, open theme {num}.css find "faq-random-colors"</li>
+        <li>You can change color from here.</li>
+       </ol>
+       <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti itaque nulla corporis iure dolorem! Laborum fuga ea eligendi voluptatem a neque recusandae facere asperiores autem perspiciatis sint ex quo, ipsam iusto, quod veniam ipsa obcaecati inventore corporis illo nihil perferendis officia. Explicabo accusamus optio nisi qui natus praesentium dolor non.</p>
+    </div>
+    <div class="green topic" >
+        <label for="green">
+            <i class="fa-solid fa-plus"></i>
+            <i class="minus fa-solid fa-minus"></i>
+            <p>How to use theme colors and add new theme color?</p>
+       </label>   
+    </div>
+    <div class="content-2">
+      To set randoms colors:
+      <ol>
+       <li>Add faq-random-colors class</li>
+       <li>To change color, open theme {num}.css find "faq-random-colors"</li>
+       <li>You can change color from here.</li>
+      </ol>
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti itaque nulla corporis iure dolorem! Laborum fuga ea eligendi voluptatem a neque recusandae facere asperiores autem perspiciatis sint ex quo, ipsam iusto, quod veniam ipsa obcaecati inventore corporis illo nihil perferendis officia. Explicabo accusamus optio nisi qui natus praesentium dolor non.</p>
+    </div>
+    <div class="blue topic">
+        <label for="blue">
+            <i class="fa-solid fa-plus"></i>  
+            <i class="minus fa-solid fa-minus"></i>   
+            <p>How to change icon?</p>
+        </label>
+    </div>
+
+    <div class="content-3">
+      To set randoms colors:
+      <ol>
+       <li>Add faq-random-colors class</li>
+       <li>To change color, open theme {num}.css find "faq-random-colors"</li>
+       <li>You can change color from here.</li>
+      </ol>
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti itaque nulla corporis iure dolorem! Laborum fuga ea eligendi voluptatem a neque recusandae facere asperiores autem perspiciatis sint ex quo, ipsam iusto, quod veniam ipsa obcaecati inventore corporis illo nihil perferendis officia. Explicabo accusamus optio nisi qui natus praesentium dolor non.</p>
+    </div>
+</body>
+</html>
