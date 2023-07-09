@@ -15,7 +15,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             display: flex;
-            width: 900px;
+            width: 1000px;
             justify-content: space-between;
         }
         .mot,.hai,.ba{
@@ -25,7 +25,16 @@
             box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.705);
             line-height: 1.5;
             position: relative;
+            transition: all 0.3s ease;
 
+        }
+        .mot:hover,.hai:hover,.ba:hover{
+            transform: scale(1.2);
+
+        }
+        .mot button:hover{
+            background: orange;
+            color: black;
         }
         .mot p,.hai p,.ba p{
             color: gray;

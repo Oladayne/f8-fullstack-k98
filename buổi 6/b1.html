@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+<style>
+    body{
+        font-family: 'Open Sans', sans-serif;
+        color: #666;
+    }
+    
+    .navbar > ul{
+        display: flex;
+        position: relative;
+        padding: 0;
+        margin: 0;
+      
+        align-items: center;
+        
+    }
+     ul > li {
+        position: relative;
+        display: inline-block;
+        padding: 15px 0px;
+        color: #666;
+        border: 1px solid rgb(203, 203, 203);
+
+        
+    }
+     li{
+        list-style: none;
+        
+    }
+    a{
+        text-decoration: none;
+        color:#666;
+    }
+
+    li a  , .drop > ul > li {
+        box-sizing: border-box;
+        padding: 14px 14px;
+        
+
+        position: relative;
+    }
+    .drop {
+        position: absolute;
+        left: 0%;
+        top: 100%;
+        display: none;
+        width: 200%;
+        box-shadow: 3px 3px 3px rgba(128, 128, 128, 0.58);
+    }
+    .drop > ul > li  {
+        display: inline-block;
+        width: 100%;
+    }
+    .drop > ul{
+        padding-left: 0px;
+        
+    }
+    .navbar > ul > li > a:hover ~ .drop   {
+        display: inline-block;
+        
+        
+    }
+    .navbar > ul > li > a:hover{
+        background-color: rgb(109, 109, 241);
+        color: aliceblue;
+    }
+    .navbar > ul > li:nth-last-child(1 ){
+        justify-self: end;
+    }
+
+    
+</style>
+<body>
+    <header>
+        <div class="navbar">
+            <ul>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-house"></i>
+                        
+                    </a>
+                    
+                    
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-house"></i>
+                        <span>section1</span>
+                    </a>
+                    
+                    <div class="drop">
+                        <ul>
+                            <li><a href="#"><i class="fa-solid fa-check"></i>drop1</a></li>
+                            <li><a href="#"><i class="fa-solid fa-check"></i>drop1</a></li>
+                            <li><a href="#"><i class="fa-solid fa-check"></i>drop1</a></li>
+                            <li><a href="#"><i class="fa-solid fa-check"></i>drop1</a></li>
+                            
+                           
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-house"></i>
+                        <span>section1</span>
+                    </a>
+                    
+                    <div class="drop">
+                        <ul>
+                            <li><a href="#"><i class="fa-solid fa-check"></i>drop1</a></li>
+                            <li><a href="#"><i class="fa-solid fa-check"></i>drop1</a></li>
+                            <li><a href="#"><i class="fa-solid fa-check"></i>drop1</a></li>
+                            <li><a href="#"><i class="fa-solid fa-check"></i>drop1</a></li>
+                            
+                           
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-house"></i>
+                        <span>section1</span>
+                    </a>
+                    
+                    <div class="drop">
+                        <ul>
+                            <li><a href="#"><i class="fa-solid fa-check"></i>drop1</a></li>
+                            <li><a href="#"><i class="fa-solid fa-check"></i>drop1</a></li>
+                            <li><a href="#"><i class="fa-solid fa-check"></i>drop1</a></li>
+                            <li><a href="#"><i class="fa-solid fa-check"></i>drop1</a></li>
+                            
+                           
+                        </ul>
+                    </div>
+                </li>
+                
+            </ul>
+        </div>
+    </header>
+</body>
+</html>
