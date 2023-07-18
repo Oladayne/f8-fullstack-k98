@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap:wght@300&family=Inter:wght@200;600&family=Lato&family=Nunito&family=Roboto:wght@100&family=Space+Grotesk:wght@300&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+body{
+    width: 80%;
+    margin: auto;
+}
+.big-box{
+    padding-top: 5%;
+    display: flex;
+    justify-content: space-between;
+}
+.BG img{
+    width: 280px;
+    height: 330px;
+    object-fit: cover;
+    object-position: 15% 85%;
+ 
+    position: relative;
+}
+.small-box{
+    display: flex;
+    gap: 25px;
+    line-height: 2;
+   
+}
+.box{
+    position: relative;
+}
+.box:nth-child(1)::after{
+    content:'' ;
+    width: 1px;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    background-color: rgb(230, 230, 230);
+    z-index: -99;
+}
+.img-background{
+    background-image: url('../img/interview.jpg');
+    width: 200px;
+    height: 310px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 35%;
+    left: -50%;
+
+}
+.img-con{
+    width: 170px;
+    height: 280px;
+    background-color: rgb(65, 90, 175);
+    color: wheat;
+    position: relative;
+}
+.img2 h2{
+    font-size: 40px;
+}
+.img2 p{
+    font-size: 10px;
+}
+.img2{
+position: absolute;
+bottom: 5%;
+left: 50%;
+}
+.mini-box button{
+    background-color: rgb(233, 233, 233);
+    border-radius: 99px;
+    border: none;
+    width: 100px;
+    height: 30px;
+    font-size: 12px;
+}
+.mini-box p{
+    font-size: 13px;
+    font-weight:300;
+    color: black;
+}
+.mini-box{
+    width: 50%  ;
+    text-align: end;
+    flex: 1;
+    transform: translateX(0%);
+    transition: all 1s ease;
+}
+.mini-box h1{
+    font-size: larger;
+}
+.year p{
+    font-size: smaller;
+}
+.year{
+    flex: 1;
+    transform: translateX(0%);
+    transition: all 1s ease;
+}
+.round{
+    background-color: rgb(227, 227, 227);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    content: "";
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items:center ;
+    z-index: 3;
+  
+}
+.round span{
+    background-color: green;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    content: "";
+    position: absolute;
+    left: 5;
+    z-index: 3;
+}
+.small-box:hover .mini-box{
+    transform: translateX(130%);
+    text-align: start;
+}
+.small-box:hover .mini-box button{
+    background-color: brown;
+    color: white;
+}
+.mini-box:hover h1{
+    color: yellow;
+}
+.small-box:hover .year{
+    transform: translateX(-130%);
+    text-align: end;
+}
+
+.small-box:hover .round span{
+    animation: big2 infinite 0.5s ;
+}
+
+@keyframes big2{
+    0%{
+        width: 20px;
+        height: 20px;
+        background-color: red;
+    }
+}

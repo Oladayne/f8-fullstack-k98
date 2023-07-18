@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap:wght@300&family=Inter:wght@200;600&family=Lato&family=Nunito&family=Roboto:wght@100&family=Space+Grotesk:wght@300&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    border: none;
+    outline: none;
+    list-style: none;
+      }
+      section{
+        margin-top: 10%;
+      }
+      form{
+        width: 80%;
+        margin: auto;
+        margin-top: 2rem;
+      }
+      .form-input{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        column-gap: 15px;
+        row-gap: 15px;
+      }
+      .form-input li{
+        flex-basis: calc((100% - 15px) / 2);
+      }
+      .form-input li:nth-last-child(1){
+        flex-basis: 100%;
+      }
+      .form-input li .input-group , .input-message{
+        width: 100%;
+        height: 45px;
+        border: 1px solid gray;
+        border-radius: 5px;
+        position: relative;
+        color: grey;
+      }
+      .input-message{
+        height: 150px;
+      }
+
+      .form-input li .input-group span ,.input-message span{
+        position: absolute;
+        align-self: center;
+        left: 1rem;
+        font-size: 14px;
+
+
+      }
+      .input-message span{
+        align-self: self-start;
+        top: 1rem;
+      }
+      .form-input li .input-group input {
+        width: 90%;
+        padding-left: 1rem;
+        height: 30px;
+        align-self: flex-end;
+        bottom: 3px;
+        border-radius: 5px;
+
+      }
+      .form-input li .input-group label, .input-message label{
+        display: flex;
+        height: 100%;
+        border-radius: 5px;
+      }
+      .form-input li .input-group input:focus ~ span{
+        scale: 80%;
+        left: .5rem;
+        
+        transform: translateY(-80%);
+        transition: all .3s ease-in;
+      }
+      .form-input li .input-group input:focus{
+        bottom: 3px;
+      }
+      textarea{
+        width: 100%;
+        height: 120px;
+        align-self: flex-end;
+        padding-left: 1rem;
+        border-radius: 5px;
+      }
+      textarea:focus ~ span{
+        top: .5rem;
+        left: .5rem;
+        scale: 80%;
+        transition: all .3s ease-in;
+        
+
+      }
+      
+      button{
+        width: 30%;
+        height: 35px;
+        border-radius: 50px;
+        background-color: blueviolet;
+        border: none;
+        color: aliceblue;
+        margin: auto;
+        
+      }
+      .btn{
+        display: flex;
+        justify-content: center;
+        margin-top: 2rem;
+      }
+      h2, p{
+        text-align: center;
+        margin-top: 1rem;
+      }
+      select{
+        width: 96%;
+        padding-left: 1rem;
+        height: 30px;
+        align-self: center;
+        bottom: 3px;
+        border-radius: 5px;
+
+      }
