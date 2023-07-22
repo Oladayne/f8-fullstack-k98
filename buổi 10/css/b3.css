@@ -52,18 +52,18 @@ body{
     z-index: 3;
     
 }
-
 .thiep{
-    position: absolute;
+   position: absolute;
     margin: auto ;
     width: 80%;
-    height: 300px;
-    
     transform-origin: 0 100%;
     bottom:50%;
     left: 50%;
     transform: translateX(-50%);
-    background-color: transparent;
+    height: 90px;
+    background: rgb(255, 255, 255);
+    transition: height 0.5s ease .7s; 
+
 
 }
 .shawdow{
@@ -77,29 +77,49 @@ body{
     filter: blur(8px);
     transition: all 0.5s ease;
 }
-.BG:hover .thiep::before{
-    height: 100%;
-
-   
+.BG:hover .thiep{
+  height: 300px;
 }
+.BG:hover .thiep .line2::before{
+    visibility: visible;
+    transition-delay: 1s;
+}
+.thiep .line1::before{
+  width: 50%;
+  height: 25px;
+  content: '';
+  background-color: #E16256;
+  position: absolute;
+  left: 0;
+  top: 50px;
+}
+.thiep .line2::before{
+  width: 50px;
+  height: 50px;
+  content: '';
+  background-color: #b6a7a5;
+  position: absolute;
+  right: 0;
+  top:180px;
+  border-radius: 50%;
+  visibility: hidden;
+  transition-delay: 0.8s;
+}
+.thiep .round::before{
+    width: 40%;
+    height: 25px;
+    content: '';
+    background-color: #E16256;
+    position: absolute;
+    left: 0;
+    top:85px;
+  }
 .BG:hover .dad{
     transform: translateY(15%);
     transition: all 0.5s ease;
     
 }
-.thiep::before{
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    z-index: 2;
-    transform-origin: 0 0;
-    height: 90px;
-    background: rgb(255, 255, 255);
-    transition: height 0.5s ease .7s; 
 
-}
 .BG:hover .shawdow{
     scale: 120%;
     transition: all 0.5s ease;
@@ -116,4 +136,34 @@ body{
     transition: transform .5s ease 1.5s;
    
    
+}
+
+.thiep .dad2{
+   transform: translateX(1%);
+    width: 97%;
+    height: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+  
+}
+.cheo{
+    width: 15px;
+    height: 100%;
+    background-color:#E16256;
+    transform: skewX(-30deg);
+   
+}
+.vien{
+ 
+  height: 15px;
+  position: relative;
+  bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+    transform-origin: 0 0;
+    
+  
+
 }

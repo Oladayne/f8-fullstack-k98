@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=Asap:wght@300&family=Inter:wght@200;600&family=Lato&family=Nunito&family=Roboto:wght@100;300&family=Space+Grotesk:wght@300&display=swap");
+* {
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+   font-family: "Roboto", sans-serif;
+   vertical-align: 0;
+}
+body {
+   background-color: #6464642a;
+   color: #646464;
+}
+.big-box {
+   width: 800px;
+   height: 50px;
+   margin-top: 100px;
+   margin-left: auto;
+   margin-right: auto;
+   background-color: white;
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+}
+.box {
+   position: relative;
+   width: 800px;
+   height: 200px;
+   margin-left: auto;
+   margin-right: auto;
+   perspective: 1500px;
+   transition: all 0.6s ease;
+}
+
+.big-box label {
+   border: 1px solid rgb(187, 187, 187);
+   height: 100%;
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 5px 5px;
+}
+
+input:nth-of-type(1):checked ~ .box .content1 {
+   visibility: visible;
+   transform: rotateX(0deg);
+   transition: all 0.6s ease;
+   opacity: 1;
+}
+input:nth-of-type(2):checked ~ .box .content2 {
+   visibility: visible;
+   transform: rotateX(0deg);
+   transition: all 0.6s ease;
+   opacity: 1;
+}
+input:nth-of-type(3):checked ~ .box .content3 {
+   visibility: visible;
+   transform: rotateX(0deg);
+   transition: all 0.6s ease;
+   opacity: 1;
+}
+input:nth-of-type(4):checked ~ .box .content4 {
+   visibility: visible;
+   transform: rotateX(0deg);
+   transition: all 0.6s ease;
+   opacity: 1;
+}
+input:nth-of-type(1):checked ~ div label:nth-of-type(1) span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   background-color: #288acb;
+   height: 100%;
+   width: 100%;
+   color: white;
+}
+input:nth-of-type(2):checked ~ div label:nth-of-type(2) span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   background-color: #288acb;
+   width: 100%;
+   height: 100%;
+   color: white;
+}
+input:nth-of-type(3):checked ~ div label:nth-of-type(3) span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   background-color: #288acb;
+   width: 100%;
+   height: 100%;
+   color: white;
+}
+input:nth-of-type(4):checked ~ div label:nth-of-type(4) span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   background-color: #288acb;
+   width: 100%;
+   height: 100%;
+   color: white;
+}
+input[type="radio"] {
+   display: none;
+}
+.content1,
+.content2,
+.content3,
+.content4 {
+   visibility: hidden;
+   position: absolute;
+   line-height: 2;
+   overflow-x: scroll; 
+   padding: 20px 10px;
+   /* thêm */
+   opacity: 0;
+   background-color: white;
+   transform: rotateX(-90deg);
+   transform-origin: center top;
+   transition: all 0.6s ease;
+}
+.content1 h1{
+    font-weight: bold;
+}
