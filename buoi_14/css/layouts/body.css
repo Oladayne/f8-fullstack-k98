@@ -1,0 +1,130 @@
+* {
+  font-family: "Inter", sans-serif;
+}
+
+.chop-1 {
+  position: absolute;
+  background-color: #DCFFCA;
+  right: 0;
+}
+
+.hero {
+  position: relative;
+  height: 100vh;
+}
+
+.tillte-1 {
+  font-size: 100px;
+  font-weight: 800;
+  position: absolute;
+  rotate: 90deg;
+  top: 0px;
+  right: 0;
+  color: rgba(0, 0, 0, 0.227);
+}
+
+.tillte-content .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  row-gap: 2rem;
+  width: 45%;
+}
+.tillte-content .content h1 {
+  font-size: 43.333px;
+}
+.tillte-content .content h2 {
+  font-size: 36.667px;
+}
+.tillte-content .content p {
+  font-size: 16px;
+}
+
+.number {
+  margin-top: 70vh;
+}
+.number .card {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  padding: 50px 40px;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 10px gray;
+  margin: auto;
+}
+.number .card .icon {
+  background-color: #DCFFCA;
+  width: fit-content;
+}
+.number .tillte-2 {
+  margin-top: 3rem;
+}
+.number .tillte-2 h2 {
+  text-align: center;
+}
+.number .content-2 {
+  width: 50%;
+  margin: auto;
+  margin-bottom: 5rem;
+}
+.number .content-2 p {
+  text-align: center;
+}
+.number .col-4:nth-child(2) {
+  transform: scale(110%);
+}
+
+.product {
+  margin-top: 10rem;
+  text-align: center;
+}
+.product .product-item .image {
+  width: 269.316px;
+  height: 269.316px;
+  border-radius: 50%;
+  background-color: #FFBA94;
+  margin: auto;
+}
+.product .product-item .image img {
+  width: 100%;
+  margin-top: 30%;
+}
+.product .product-item .in-for {
+  margin-top: 10rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.7rem;
+}
+.product .product-item .in-for > p {
+  font-size: 23.333px;
+  font-weight: 700;
+}
+.product .product-item .in-for > .tillte-4 p {
+  font-size: 16.667px;
+  font-weight: 400;
+}
+.product .product-item .in-for .price p {
+  font-weight: 400;
+}
+.product .product-item .in-for .price span {
+  font-size: 23.333px;
+  font-weight: 600;
+}
+.product .product-item .btn-add-cart {
+  margin-top: 3rem;
+}
+.product .product-item .btn-add-cart button {
+  padding: 13.333px 11.667px;
+  border-radius: 6.667px;
+  background: #46B20F;
+  color: #ffffff;
+  font-size: 16.667px;
+  font-weight: 700;
+}
+.product .row {
+  row-gap: 2rem;
+}
+
+/*# sourceMappingURL=body.css.map */

@@ -1,0 +1,128 @@
+@import "../parts/variables";
+.header{
+    box-shadow: 0px 1.6px 8.3px 0px rgba(0, 0, 0, 0.15);
+    padding: 15px 0;
+    .logo{
+        height: 99px;
+        img{
+            max-height: 100%;
+            width: auto;
+        }
+    }
+    .header-nav{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+    .menu{
+        ul{
+            display: flex;
+            li{
+                padding: 0 25px  ;
+                a{
+                    font-weight: 600;
+                    padding-bottom: 54px;
+                }
+                &.active{
+                    a{
+                        color: $primaryColor;
+                        border-bottom: 1.667px solid $primaryColor;
+                    }
+                }
+                &:hover{
+                    @extend .active
+                }
+            }
+        }
+    }
+}
+.cart-icon{
+    padding: 0 25px;
+    a{
+        position: relative;
+        display: inline-block;
+        span{
+            position: absolute;
+            top: -5px;
+            right: -6px;
+            background: $secondary;
+            color: white;
+            padding: 0 4px;
+            border-radius: 50%;
+            font-size: 1.3rem;
+        }
+    }
+}
+.search-icon{
+    padding-left: 25px;
+}
+.menu-toggle{
+    display: none;
+}
+}
+@media screen and (max-width:991.98px) {
+    .header{
+        .menu-toggle{
+            display: flex;
+            align-items: center;
+            label{
+                font-size: 2.5rem;
+            }
+        }
+        .logo{
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .header-nav{
+            .menu{
+              position: fixed;
+              top: 0;
+              left: 0;
+              bottom: 0;
+              background: $primaryColor;
+              padding: 20px 0;
+              min-width: 40%;
+              translate: -100%;
+              transition: translate 1s ease;
+              z-index: 2;
+              ul{
+                display: block;
+                li{
+                    a{
+                        color: white !important;
+                        border: 0 !important;
+                        display: block;
+                        padding: 10px 0;
+                    }
+                }
+            }
+            }
+            .overlay{
+                position: fixed;
+                z-index: 1;
+                inset: 0;
+                background-color: gray;
+                opacity: 0;
+                visibility: hidden;
+                transition:  0.4s ease;
+                transition-property: opacity , visibility;
+            }
+            input[type="checkbox"]{
+                &:checked{
+                    ~ .menu{
+                        translate: 0;
+                    }
+                    ~ .overlay{
+                        opacity: 1;
+                        visibility: visible;
+                    }
+                }
+            }
+            .search-icon{
+                padding-left: 0;
+            }
+        }
+    }
+}

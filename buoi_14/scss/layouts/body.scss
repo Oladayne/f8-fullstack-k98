@@ -1,0 +1,326 @@
+
+*{
+    font-family: 'Inter', sans-serif;
+}
+.chop-1{
+    position: absolute; 
+    background-color: #DCFFCA;
+    right: 0;
+ 
+}
+.hero{
+    position: relative;
+    height: 100vh;
+}
+.tillte-1{
+    font-size: 100px;
+    font-weight: 800;
+   position: absolute;
+    rotate: 90deg;
+    top: 0px;
+    right: 0;
+    color: rgba(0, 0, 0, 0.227);
+    
+}
+
+.tillte-content{
+    .content{
+         display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100vh;
+        row-gap: 2rem;
+        width: 45%;
+        h1{
+            font-size: 43.333px;
+        }
+        h2{
+            font-size: 36.667px;
+        }
+        p{
+            font-size: 16px;
+        }
+
+    }
+ 
+ 
+}   
+.number{
+    margin-top:1rem;
+    .card{
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+
+        padding: 50px 40px;
+        box-sizing: border-box;
+        box-shadow: 2px 2px 10px gray;
+        margin: auto;
+        .icon{
+           
+            background-color: #DCFFCA;
+            width: fit-content;
+        }
+    }
+    .tillte-2{
+        margin-top: 3rem;
+        h2{
+        text-align: center;
+    }
+    } 
+    .content-2 {
+     
+        width: 50%;
+        margin: auto;
+        margin-bottom: 5rem;
+         p{
+        text-align: center;
+    }
+    }
+   
+    .col-4:nth-child(2){
+        transform: scale(110%);
+    }
+}    
+@mixin text-card{
+    text-align: center;
+
+}
+@mixin button-add{
+    padding: 13.333px 11.667px;
+    border-radius: 6.667px;
+    background: #46B20F;
+    color: #ffffff;
+    font-size: 16.667px;
+    font-weight: 700;
+
+}
+@mixin image-product{
+    width: 269.316px;
+    height: 269.316px;
+    border-radius: 50%;
+    background-color: #FFBA94;
+    margin: auto;
+   
+}
+@mixin image{
+    width: 100%;
+    margin-top: 30%
+    
+}
+.product{
+    margin-top: 10rem;
+    @include text-card;
+    .product-item{
+        .image{
+            @include image-product;
+            img{
+                @include image;
+            }
+        }
+        .in-for{
+            margin-top: 10rem;
+            display: flex;
+            flex-direction: column;
+            row-gap: .7rem;
+
+            > p{
+                font-size: 23.333px;
+                font-weight: 700;
+            }
+            > .tillte-4 p {
+                font-size: 16.667px;
+                font-weight: 400;
+            }
+            .price {
+                p{
+                    font-weight: 400;
+                }
+                span{
+                font-size: 23.333px;
+                font-weight: 600;
+            }
+            } 
+        }
+        .btn-add-cart{
+            margin-top: 3rem;
+            button{
+                 @include button-add;
+            }
+           
+        }
+    }
+    .row{
+        row-gap: 2rem
+    }
+
+}
+.news{
+    
+    margin-top: 10rem;
+    > h3{
+        font-size: 31.667px;
+        text-align: center;
+    }
+    .tillte-5{
+        text-align: center;
+        width: 60%;
+        margin: auto;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 20.417px;
+        margin-bottom: 5rem;
+        margin-top: 5rem;
+    }
+    .card-news{
+       > *{
+        margin: 16.5px 0px;
+       } 
+       img{
+        margin: 0;
+       }
+        .date-and-tillte{
+             display: flex;
+            justify-content: space-between;
+          
+            > p{
+                font-size: 15px;
+                color: #46B20F;
+            }
+        }
+        .date{
+            display: flex;
+            justify-content: space-between;
+            p{
+                font-size: 15px;
+                color: #A3A3A3;
+            }
+        }
+        .topic{
+            font-size: 20px;
+            font-weight: 600;
+        }
+        .contnent-news{
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 20.417px;
+        }
+       
+    }
+    .more{
+        text-align: center;
+        margin-top: 76px;
+        margin-bottom: 76px;
+        a{
+            padding: 11.667px 21.667px;
+            font-size: 16.667px;
+            font-weight: 600;
+            border-radius: 6.667px;
+            border: 0.833px solid var(--green-800-main, #46B20F);
+
+
+        }
+    }
+}
+.contact{
+   
+    display: flex;
+    margin-top: 5rem;
+    .form-contact{
+        input , textarea{
+            border: 1px solid #A3A3A3;
+            border-radius: 6.667px;
+            width: 100%;
+            padding: 13px;
+        }
+    }
+}
+.policy{
+    position: relative;
+    &::after{
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 350px;
+       top: 300px;
+        left: 0;
+        background-color: #FFF0E7;
+        z-index: -1;
+    }
+    > div > h2{
+        text-align: center;
+        width: 395px;
+        margin: auto;
+        font-size: 31.667px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 131.523%;
+        margin-bottom: 24px;
+    }
+    > div > p{
+        margin-top: 24px;
+        text-align: center;
+        width: 745px;
+        margin: auto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20.417px;
+    }
+    .policy-product{
+        margin-top: 50px;
+        .policy-product-card{
+            width: 345.833px;
+            height: 359.167px;
+            margin: auto;
+            background-color: #ffffff;
+            
+            img{
+                width: 345.833px;
+                height: 195px;
+                object-fit: cover;
+            }
+            .topic{
+                font-size: 20px;
+                font-weight: 600;
+                line-height: 26.667px;
+                margin: 1rem 0;
+               color: #E05000;
+                padding:0px 25px ;
+            }
+            .content-news{
+                font-size: 16px;
+                font-weight: 400;
+                padding:0px 25px ;
+            }
+        }
+    }
+    .policy-list{
+        margin-top: 240px;
+        img{
+            width: 55.833px;
+height: 55.833px;
+
+        }
+        .col-4{
+            display: flex;
+            gap: 15.8px;
+           .content-6{
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            p{
+                width: 216.667px;
+                font-size: 17px;
+                font-weight: 500;
+            }
+            h3{
+                font-size: 20px;
+                font-weight: 600;
+            }
+           }
+            
+        }
+    }
+}
