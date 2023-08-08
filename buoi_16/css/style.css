@@ -1,0 +1,25 @@
+.cell {
+    height: 60px;
+    width: 60px;
+    border: 2px solid #000;
+}
+
+.black {
+    background-color: #000;
+}
+
+.white {
+    background-color: #fff;    
+}
+
+.table-style {
+    border-collapse: collapse;
+}
+.cel-multiplication {
+    height: 40px;
+    width: 120px;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 2px solid #000;
+    font-size: 1.2rem;
+    padding: 0 10px;
+}
