@@ -17,7 +17,7 @@ console.log(getB(10));
 
 //bài 2
 function reverseNumber(number) {
-  const reversed = parseInt(number.toString().split('').reverse().join(''));
+  const reversed = parseInt(number.toString()                                                     );
   return reversed;
 }
 
