@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap:wght@300&family=Lato&family=Nunito&family=Roboto:wght@100&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Nunito', sans-serif;
+}
+.big-box{
+    display: flex;
+    height: 100vh;
+    width: auto;
+}
+.xam{
+    background: gray;
+    flex: 2.3;
+
+}
+.trang{
+    background-color: white;
+    flex: 1;
+}
+.header{
+    background: rgb(239, 238, 238);
+    height: 80px;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.header-con{
+    margin: auto;
+    width: 350px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.shoping{
+    position: relative;
+    width: 155px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content:center ;
+}
+.chu{
+    font-weight: 800;
+    font-size: larger;
+}
+.so{
+    position: absolute;
+    background-color: blue;
+    color: white;
+    width: 15px;
+    height: 15px;
+    display: flex;
+    font-size: 10px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    top: 0;
+    right: 0;
+}
+.exit{
+    color: red;
+    font-size: 25px;
+}
+.bodi{
+    background: rgb(255, 255, 255);
+    height: 160px;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid rgb(226, 226, 226);
+}
+.bodi-con{
+    width: 300px;
+    height: auto;
+    display: flex;
+    position: relative;
+}
+.img img{
+    width: 80px;
+    height: 80px;
+    vertical-align:bottom ;
+}
+.text{
+    width: 200px;
+    height: auto;
+
+}
+.tieude{
+    padding-top:10px;
+}
+.price{
+    width: 200px;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    bottom: 0%;
+    
+}
+.price-con{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+.quantity{
+    display: flex;
+    justify-content: space-evenly;
+    border-radius: 99px;
+    width: 100px;
+    height: 30px;
+    border: 1px solid gray;
+    align-items: center;
+    font-size: smaller;
+    color: rgb(179, 179, 179); 
+}
+.delete{
+    color: rgb(179, 179, 179); 
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.footer{
+    margin: auto;
+    width: 300px;
+    position: relative;
+}
+.subtotal{
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    align-items: center;
+}
+h2{
+    font-size: large;
+}
+.subtotal p{
+    color: red;
+    font-size: large;
+    font-weight: 600;
+}
+.btn button{
+    display: block;
+    width: 100%;
+    height: 40px;
+   margin-bottom: 10px;
+}
+.one{
+    background-color: white;
+    color: rgb(165, 165, 165); 
+    border-radius: 5px;
+    border: 1px solid rgb(165, 165, 165); 
+}
+.chuthich{
+    margin-bottom: 10px;
+}
+.chuthich span{
+    font-size: small;
+    color:  rgb(165, 165, 165); ;
+}
+.two{
+    background-color: blue;
+    color: white;
+    border-radius: 5px;
+    border: none
+}
+.btn{
+    margin-bottom: 30px;
+}
+.shipping{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.icon{
+    display: flex;
+    color: blue;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid blue;
+    align-items: center;
+    justify-content: center;
+}
+.end{
+    font-weight: 600;
+}

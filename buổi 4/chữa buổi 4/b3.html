@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="b3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Bài 3</title>
+</head>
+<body>
+    <section class="best-seller">
+        <h2>Best Seller</h2>
+        <input type="radio" name="product" id="skin-care" class="product" checked>
+        <input type="radio" name="product" id="hair-care" class="product">
+        <input type="radio" name="product" id="comestics" class="product">
+        <input type="radio" name="product" id="fragrance" class="product">
+        <input type="radio" name="product" id="makeup" class="product">
+        <div class="label-products">
+            <label for="skin-care">Skincare</label>
+            <label for="hair-care">Haircare</label>
+            <label for="comestics">Comestics Cases</label>
+            <label for="fragrance">Fragrance</label>
+            <label for="makeup">Makeup</label>
+        </div>
+        <form action="#"  class="products-skincare">
+            <div class="product-item">
+                <div class="product-item__img">
+                    <img src="./img/skincare/CeraVe_Daily_01.jpg" alt="CeraVe_Daily_01">
+                    <img src="./img/skincare/CeraVe_Daily_02.jpg" alt="CeraVe_Daily_02">
+                    <div class="product-item__img--hover">
+                        <button class="heart"></button>
+                        <button class="switch"></button>
+                        <button class="watch"></button>
+                        <button class="adding-to-cart">Add to cart</button>
+                    </div>
+                </div>
+                <!-- <div class="rate">
+                    <span>☆</span>
+                    <span>☆</span>
+                    <span>☆</span>
+                    <span>☆</span>
+                    <span>☆</span>
+                </div> -->
+
+                <div class="rate">
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star"></span>
+                </div>
+
+                <h3 class="product-item__info">
+                    <a href="#" title="CeraVe Daily Moisturizing Lotion for Dry Skin">CeraVe Daily Moisturizing Lotion for Dry Skin</a>
+                    <span class="product-item__price">$14.99</span>
+                </h3>
+            </div>
+            <!-- End product_1 -->
+            <div class="product-item">
+                <div class="product-item__img">
+                    <img src="./img/skincare/Dove_Body_01.jpg" alt="Dove_Body_01">
+                    <img src="./img/skincare/Dove_Body_02.jpg" alt="Dove_Body_02">
+                    <div class="product-item__img--hover">
+                        <button class="heart"></button>
+                        <button class="switch"></button>
+                        <button class="watch"></button>
+                        <button class="adding-to-cart">Add to cart</button>
+                    </div>
+                </div>
+                <div class="rate">
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star "></span>
+                    <span class="fa-solid fa-star"></span>
+                </div>
+                <h3 class="product-item__info">
+                    <a href="#" title="Dove Body Wash with Pump Sensitive Skin Hypoallergenic">Dove Body Wash with Pump Sensitive Skin Hypoallergenic</a>
+                    <span class="product-item__price">$26.19</span>
+                </h3>
+            </div>
+            <!-- End product_2 -->
+            <div class="product-item">
+                <div class="product-item__img">
+                    <img src="./img/skincare/neutrogena_alcohol_01.jpg" alt="neutrogena_alcohol_01">
+                    <img src="./img/skincare/neutrogena_alcohol_02.jpg" alt="neutrogena_alcohol_01">
+                    <div class="product-item__img--hover">
+                        <button class="heart"></button>
+                        <button class="switch"></button>
+                        <button class="watch"></button>
+                        <button class="adding-to-cart">Add to cart</button>
+                    </div>
+                </div>
+                <div class="rate">
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star"></span>
+                </div>
+                <h3 class="product-item__info">
+                    <a href="#" title="Neutrogena Alcohol-Free Gentle Daily Fragrance-Free Face">Neutrogena Alcohol-Free Gentle Daily Fragrance-Free Face</a>
+                    <span class="product-item__price">$6.69</span>
+                </h3>
+            </div>
+            <!-- End product_3 -->
+            <div class="product-item">
+                <div class="product-item__img">
+                    <img src="./img/skincare/Blend_facemask_01.jpg" alt="Blend_facemask_01">
+                    <img src="./img/skincare/Blend_facemask_02.jpg" alt="Blend_facemask_02">
+                    <div class="product-item__img--hover">
+                        <button class="heart"></button>
+                        <button class="switch"></button>
+                        <button class="watch"></button>
+                        <button class="adding-to-cart">Add to cart</button>
+                    </div>
+                </div>
+                <div class="rate">
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                </div>
+                <h3 class="product-item__info">
+                    <a href="#" title="CFREEMAN Exotic Blends Face Mask       ">CFREEMAN Exotic Blends Face Mask       </a>
+                    <span class="product-item__price">$15.39</span>
+                </h3>
+            </div>
+            <!-- End product_4 -->
+        </form>
+        <form action="#"  class="products-haircare">
+            <div class="product-item">
+                <div class="product-item__img">
+                    <img src="./img/haircare/Difeel_Jamaican_01.jpg" alt="Difeel_Jamaican_01">
+                    <img src="./img/haircare/Difeel_Jamaican_02.jpg" alt="Difeel_Jamaican_02">
+                    <div class="product-item__img--hover">
+                        <button class="heart"></button>
+                        <button class="switch"></button>
+                        <button class="watch"></button>
+                        <button class="adding-to-cart">Add to cart</button>
+                    </div>
+                </div>
+                <!-- <div class="rate">
+                    <span>☆</span>
+                    <span>☆</span>
+                    <span>☆</span>
+                    <span>☆</span>
+                    <span>☆</span>
+                </div> -->
+
+                <div class="rate">
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star"></span>
+                </div>
+
+                <h3 class="product-item__info">
+                    <a href="#" title="Difeel Jamaican Black Castor Superior Growth 3-PC Hair Care Set 
+                    ">Difeel Jamaican Black Castor Superior Growth 3-PC Hair Care Set 
+                </a>
+                    <span class="product-item__price">$23.79</span>
+                </h3>
+            </div>
+            <!-- End product_1 -->
+            <div class="product-item">
+                <div class="product-item__img">
+                    <img src="./img/haircare/Haircare_Miracle_01.jpg" alt="Haircare_Miracle_01">
+                    <img src="./img/haircare/Haircare_Miracle_02.jpg" alt="Haircare_Miracle_02">
+                    <div class="product-item__img--hover">
+                        <button class="heart"></button>
+                        <button class="switch"></button>
+                        <button class="watch"></button>
+                        <button class="adding-to-cart">Add to cart</button>
+                    </div>
+                </div>
+                <div class="rate">
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star "></span>
+                    <span class="fa-solid fa-star"></span>
+                </div>
+                <h3 class="product-item__info">
+                    <a href="#" title="Haircare Miracle Leave
+                    ">Haircare Miracle Leave</a>
+                    <span class="product-item__price">$18.99</span>
+                </h3>
+            </div>
+            <!-- End product_2 -->
+            <div class="product-item">
+                <div class="product-item__img">
+                    <img src="./img/haircare/Thickening_Shampo_01.jpg" alt="Thickening_Shampo_01">
+                    <img src="./img/haircare/Thickening_Shampo_02.jpg" alt="Thickening_Shampo_02">
+                    <div class="product-item__img--hover">
+                        <button class="heart"></button>
+                        <button class="switch"></button>
+                        <button class="watch"></button>
+                        <button class="adding-to-cart">Add to cart</button>
+                    </div>
+                </div>
+                <div class="rate">
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star"></span>
+                </div>
+                <h3 class="product-item__info">
+                    <a href="#" title="Viviscal Thickening Shampoo
+                    ">Viviscal Thickening Shampoo</a>
+                    <span class="product-item__price">$26.35</span>
+                </h3>
+            </div>
+            <!-- End product_3 -->
+            <div class="product-item">
+                <div class="product-item__img">
+                    <img src="./img/haircare/Nexxus_Smooth_01.jpg" alt="Nexxus_Smooth_01">
+                    <img src="./img/haircare/Nexxus_Smooth_02.jpg" alt="Nexxus_Smooth_02">
+                    <div class="product-item__img--hover">
+                        <button class="heart"></button>
+                        <button class="switch"></button>
+                        <button class="watch"></button>
+                        <button class="adding-to-cart">Add to cart</button>
+                    </div>
+                </div>
+                <div class="rate">
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                </div>
+                <h3 class="product-item__info">
+                    <a href="#" title="Nexxus Smooth & Full Blow Dry Balm Weightless Style">Nexxus Smooth & Full Blow Dry Balm Weightless Style</a>
+                    <span class="product-item__price">$14.30</span>
+                </h3>
+            </div>
+            <!-- End product_4 -->
+        </form>
+        <form action="#"  class="products-comestics">
+            <div class="product-item">
+                <div class="product-item__img">
+                    <img src="./img/cometics/Clinique_skincare_01.jpg" alt="Clinique_skincare_01">
+                    <img src="./img/cometics/Clinique_skincare_02.jpg" alt="Clinique_skincare_02">
+                    <div class="product-item__img--hover">
+                        <button class="heart"></button>
+                        <button class="switch"></button>
+                        <button class="watch"></button>
+                        <button class="adding-to-cart">Add to cart</button>
+                    </div>
+                </div>
+                <div class="rate">
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star"></span>
+                </div>
+
+                <h3 class="product-item__info">
+                    <a href="#" title="Clinique MVPs Skincare and Makeup
+                    ">Clinique MVPs Skincare and Makeup</a>
+                    <span class="product-item__price">$22.99</span>
+                </h3>
+            </div>
+            <!-- End product_1 -->
+            <div class="product-item">
+                <div class="product-item__img">
+                    <img src="./img/cometics/Japanese_SkinCare_01.jpg" alt="Japanese_SkinCare_01">
+                    <img src="./img/cometics/Japanese_SkinCare_02.jpg" alt="Japanese_SkinCare_02">
+                    <div class="product-item__img--hover">
+                        <button class="heart"></button>
+                        <button class="switch"></button>
+                        <button class="watch"></button>
+                        <button class="adding-to-cart">Add to cart</button>
+                    </div>
+                </div>
+                <div class="rate">
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                </div>
+                <h3 class="product-item__info">
+                    <a href="#" title="Curel Japanese Skin Care Intensive Face">Curel Japanese Skin Care Intensive Face</a>
+                    <span class="product-item__price">$18.45</span>
+                </h3>
+            </div>
+            <!-- End product_2 -->
+            <div class="product-item">
+                <div class="product-item__img">
+                    <img src="./img/cometics/RoC_Retinol_01.jpg" alt="RoC_Retinol_01">
+                    <img src="./img/cometics/RoC_Retinol_02.jpg" alt="RoC_Retinol_02">
+                    <div class="product-item__img--hover">
+                        <button class="heart"></button>
+                        <button class="switch"></button>
+                        <button class="watch"></button>
+                        <button class="adding-to-cart">Add to cart</button>
+                    </div>
+                </div>
+                <div class="rate">
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                </div>
+                <h3 class="product-item__info">
+                    <a href="#" title="RoC Retinol Correxion Max Daily Hydration Anti-Aging Daily Face
+                    ">RoC Retinol Correxion Max Daily Hydration Anti-Aging Daily Face</a>
+                    <span class="product-item__price">$16.69</span>
+                </h3>
+            </div>
+            <!-- End product_3 -->
+            <div class="product-item">
+                <div class="product-item__img">
+                    <img src="./img/cometics/Anti_Aging_01.jpg" alt="/Anti_Aging_01">
+                    <img src="./img/cometics/Anti_Aging_02.jpg" alt="/Anti_Aging_02">
+                    <div class="product-item__img--hover">
+                        <button class="heart"></button>
+                        <button class="switch"></button>
+                        <button class="watch"></button>
+                        <button class="adding-to-cart">Add to cart</button>
+                    </div>
+                </div>
+                <div class="rate">
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star"></span>
+                </div>
+                <h3 class="product-item__info">
+                    <a href="#" title="Anti-Aging Foundation by Almay, Smart Shade Face Makeup with Hyaluronic Acid
+                    ">Anti-Aging Foundation by Almay, Smart Shade Face Makeup with Hyaluronic Acid</a>
+                    <span class="product-item__price">$13.39</span>
+                </h3>
+            </div>
+            <!-- End product_4 -->
+        </form>
+        <form action="#"  class="products-fragrance">
+            <div class="product-item">
+                <div class="product-item__img">
+                    <img src="./img/fragrance/Swiss_Arabian_01.jpg" alt="Swiss_Arabian_01">
+                    <img src="./img/fragrance/Swiss_Arabian_02.jpg" alt="Swiss_Arabian_02">
+                    <div class="product-item__img--hover">
+                        <button class="heart"></button>
+                        <button class="switch"></button>
+                        <button class="watch"></button>
+                        <button class="adding-to-cart">Add to cart</button>
+                    </div>
+                </div>
+                <div class="rate">
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                </div>
+
+                <h3 class="product-item__info">
+                    <a href="#" title="Swiss Arabian Layali - Luxury Products From Dubai - Long Lasting">Swiss Arabian Layali - Luxury Products From Dubai - Long Lasting</a>
+                    <span class="product-item__price">$24.39</span>
+                </h3>
+            </div>
+            <!-- End product_1 -->
+            <div class="product-item">
+                <div class="product-item__img">
+                    <img src="./img/fragrance/Vera_Wang_01.jpg" alt="Vera_Wang_011">
+                    <img src="./img/fragrance/Vera_Wang_02.jpg" alt="Vera_Wang_02">
+                    <div class="product-item__img--hover">
+                        <button class="heart"></button>
+                        <button class="switch"></button>
+                        <button class="watch"></button>
+                        <button class="adding-to-cart">Add to cart</button>
+                    </div>
+                </div>
+                <div class="rate">
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star"></span>
+                </div>
+                <h3 class="product-item__info">
+                    <a href="#" title="Vera Wang Princess Eau de Toilette Spray for Women">Vera Wang Princess Eau de Toilette Spray for Women</a>
+                    <span class="product-item__price">$16.99</span>
+                </h3>
+            </div>
+            <!-- End product_2 -->
+            <div class="product-item">
+                <div class="product-item__img">
+                    <img src="./img/fragrance/Versace_01.jpg" alt="Versace_01">
+                    <img src="./img/fragrance/Versace_02.jpg" alt="Versace_02">
+                    <div class="product-item__img--hover">
+                        <button class="heart"></button>
+                        <button class="switch"></button>
+                        <button class="watch"></button>
+                        <button class="adding-to-cart">Add to cart</button>
+                    </div>
+                </div>
+                <div class="rate">
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                </div>
+                <h3 class="product-item__info">
+                    <a href="#" title="Versace Versace Dylan Blue Pour Femme 3.4 Oz Eau De Parfum Spray">Versace Versace Dylan Blue Pour Femme 3.4 Oz Eau De Parfum Spray</a>
+                    <span class="product-item__price">$17.59</span>
+                </h3>
+            </div>
+            <!-- End product_3 -->
+            <div class="product-item">
+                <div class="product-item__img">
+                    <img src="./img/fragrance/Eau_De_01.jpg" alt="Eau_De_01">
+                    <img src="./img/fragrance/Eau_De_02.jpg" alt="Eau_De_02">
+                    <div class="product-item__img--hover">
+                        <button class="heart"></button>
+                        <button class="switch"></button>
+                        <button class="watch"></button>
+                        <button class="adding-to-cart">Add to cart</button>
+                    </div>
+                </div>
+                <div class="rate">
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star"></span>
+                    <span class="fa-solid fa-star"></span>
+                </div>
+                <h3 class="product-item__info">
+                    <a href="#" title="Live By Jennifer Lopez For Women. Eau De Parfum Spray">Live By Jennifer Lopez For Women. Eau De Parfum Spray</a>
+                    <span class="product-item__price">$25.19</span>
+                </h3>
+            </div>
+            <!-- End product_4 -->
+        </form>
+        <form action="#"  class="products-makeup">
+            <div class="product-item">
+                <div class="product-item__img">
+                    <img src="./img/makeup/Shimmer_Strips_01.jpg" alt="Shimmer_Strips_01">
+                    <img src="./img/makeup/Shimmer_Strips_02.jpg" alt="Shimmer_Strips_02">
+                    <div class="product-item__img--hover">
+                        <button class="heart"></button>
+                        <button class="switch"></button>
+                        <button class="watch"></button>
+                        <button class="adding-to-cart">Add to cart</button>
+                    </div>
+                </div>
+                <div class="rate">
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star"></span>
+                    <span class="fa-solid fa-star"></span>
+                </div>
+
+                <h3 class="product-item__info">
+                    <a href="#" title="Physicians Formula Shimmer Strips Custom Eye Enhancing Kit with Eyeshadow, Eyeliner & Mascara, Nude">Physicians Formula Shimmer Strips Custom Eye Enhancing Kit with Eyeshadow, Eyeliner & Mascara, Nude</a>
+                    <span class="product-item__price">$54.99</span>
+                </h3>
+            </div>
+            <!-- End product_1 -->
+            <div class="product-item">
+                <div class="product-item__img">
+                    <img src="./img/makeup/SHANY_01.jpg" alt="SHANY_01">
+                    <img src="./img/makeup/SHANY_02.jpg" alt="SHANY_02">
+                    <div class="product-item__img--hover">
+                        <button class="heart"></button>
+                        <button class="switch"></button>
+                        <button class="watch"></button>
+                        <button class="adding-to-cart">Add to cart</button>
+                    </div>
+                </div>
+                <div class="rate">
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star"></span>
+                    <span class="fa-solid fa-star "></span>
+                    <span class="fa-solid fa-star"></span>
+                </div>
+                <h3 class="product-item__info">
+                    <a href="#" title="SHANY All In One Harmony Makeup Kit - Ultimate Color Combination">SHANY All In One Harmony Makeup Kit - Ultimate Color Combination</a>
+                    <span class="product-item__price">$21.39</span>
+                </h3>
+            </div>
+            <!-- End product_2 -->
+            <div class="product-item">
+                <div class="product-item__img">
+                    <img src="./img/makeup/Natural_Sunshine_01.jpg" alt="Natural_Sunshine_01">
+                    <img src="./img/makeup/Natural_Sunshine_02.jpg" alt="Natural_Sunshine_02">
+                    <div class="product-item__img--hover">
+                        <button class="heart"></button>
+                        <button class="switch"></button>
+                        <button class="watch"></button>
+                        <button class="adding-to-cart">Add to cart</button>
+                    </div>
+                </div>
+                <div class="rate">
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                </div>
+                <h3 class="product-item__info">
+                    <a href="#" title="Make-Up Studio Eye Collection - Natural Sunshine for Women - 4 x 0.07 oz Eye Shadow
+                    ">Make-Up Studio Eye Collection - Natural Sunshine for Women - 4 x 0.07 oz Eye Shadow</a>
+                    <span class="product-item__price">$16.39</span>
+                </h3>
+            </div>
+            <!-- End product_3 -->
+            <div class="product-item">
+                <div class="product-item__img">
+                    <img src="./img/makeup/Shany_classy_01.jpg" alt="Shany_classy_01">
+                    <img src="./img/makeup/Shany_classy_02.jpg" alt="Shany_classy_02">
+                    <div class="product-item__img--hover">
+                        <button class="heart"></button>
+                        <button class="switch"></button>
+                        <button class="watch"></button>
+                        <button class="adding-to-cart">Add to cart</button>
+                    </div>
+                </div>
+                <div class="rate">
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star star-cheked"></span>
+                    <span class="fa-solid fa-star"></span>
+                    <span class="fa-solid fa-star"></span>
+                </div>
+                <h3 class="product-item__info">
+                    <a href="#" title="SHANY Classy & Sassy All-in-One Makeup Kit with Mirror, Applicators">SHANY Classy & Sassy All-in-One Makeup Kit with Mirror, Applicators</a>
+                    <span class="product-item__price">$11.99</span>
+                </h3>
+            </div>
+            <!-- End product_4 -->
+        </form>
+    </section>
+</body>
+</html>

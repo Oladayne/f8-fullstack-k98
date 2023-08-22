@@ -1,0 +1,33 @@
+
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 2;
+}
+i{
+    font-size: 20px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.col1 tr{
+    color: gray;
+}
+.col2 input {
+    height: 35px;
+    width: 500px;
+}
+.col2 td{
+    line-height: 3;
+}
+button{
+    padding: 10px 40px;
+    color: aliceblue;
+    font-size: 15px;
+    font-weight: 400;
+    background-color: blueviolet;
+    border: none;
+}
+span{
+    border-bottom: 5px solid rgb(255, 89, 0);
+    padding-bottom: 10px;
+}

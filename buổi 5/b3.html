@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        section h1,p{
+            text-align: center;
+        }
+        .box{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            width: 1000px;
+            justify-content: space-between;
+        }
+        .mot,.hai,.ba{
+            height: 350px;
+            width: 280px;
+            text-align: center;
+            box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.705);
+            line-height: 1.5;
+            position: relative;
+            transition: all 0.3s ease;
+
+        }
+        .mot:hover,.hai:hover,.ba:hover{
+            transform: scale(1.2);
+
+        }
+        .mot button:hover{
+            background: orange;
+            color: black;
+        }
+        .mot p,.hai p,.ba p{
+            color: gray;
+
+        }
+        .mot button,.hai button, .ba button{
+            background-color: orangered;
+            color: white;
+            border: none;
+            width: 120px;
+            height: 40px;
+        }
+        .mini{
+            top: 10%; 
+            left: 0;
+            position: absolute;
+            width: 100%; 
+            height: 50%; 
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h1>Take a look at our services</h1>
+        <p>Duis fringilla erat sit amet sapien dignissim hendrerit vel sit amet libero</p>
+        <div class="box">
+            <div class="mot">
+                <div class="mini">
+                    <div style="height: 80px; width: 80px; border-radius: 50%; border: 1px solid orangered; margin: auto; color: orangered; display: flex; justify-content: center;align-items: center
+                ;">
+                   <p style="text-align: center;color: orangered; font-size: 40px;"> <i class="fa-solid fa-camera-retro"></i></p>
+                </div>
+                <h2>Photography</h2>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere, minima!</p>
+                <button>Read More</button>
+            </div>
+                </div>
+            <div class="hai">
+                <div class="mini">
+                    <div style="height: 80px; width: 80px; border-radius: 50%; border: 1px solid orangered; margin: auto; color: orangered; display: flex; justify-content: center;align-items: center
+                    ;">
+                       <p style="text-align: center;color: orangered; font-size: 40px;"> <i class="fa-solid fa-laptop"></i></p>
+                    </div>
+                    <h2>Webdesigning</h2>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt, perspiciatis.</p>
+                    <button>Read More</button>
+                </div>
+                </div>
+            <div class="ba">
+                <div class="mini">
+                    <div style="height: 80px; width: 80px; border-radius: 50%; border: 1px solid orangered; margin: auto; color: orangered; display: flex; justify-content: center;align-items: center
+                    ;">
+                       <p style="text-align: center;color: orangered; font-size: 40px;"> <i class="fa-solid fa-video"></i></p>
+                    </div>
+                    <h2>Videography</h2>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur, fuga!</p>
+                    <button>Read More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

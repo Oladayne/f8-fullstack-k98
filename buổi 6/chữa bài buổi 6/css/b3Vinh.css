@@ -1,0 +1,336 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    text-align: center;
+    font-family: "Nunito", sans-serif;
+    background: url(http://uiwebsoft.com/justlog/login-one/images/login-bg2.jpg)
+      no-repeat bottom center / cover;
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    width: 790px;
+    height: 464px;
+    margin: 140px auto;
+    border-radius: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
+  
+  .form-aside {
+    position: relative;
+    width: 340px;
+    height: 100%;
+    border-radius: 10px 0 0 10px;
+    background-color: #ff574d;
+  }
+  
+  .aside-header {
+    margin-top: 68px;
+  }
+  
+  .logo {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #ff574d;
+  }
+  
+  .logo p {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 40px;
+  }
+  
+  .heading--h1 {
+    display: inline-block;
+    color: #fff;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 40px;
+    margin-left: 8px;
+  }
+  
+  .aside-decs {
+    height: 72px;
+    margin: 0 12px;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 24px;
+    color: #fff;
+    overflow: hidden;
+  }
+  
+  .btn {
+    border: none;
+  }
+  
+  .btn--secondary {
+    width: 50%;
+    margin: 36px 0;
+    padding: 8px 38px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    background-color: #fff;
+    color: #ff574d;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 7px 29px 0px;
+  }
+  
+  .btn--secondary:hover {
+    color: #df3324;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+  
+  .icon-list {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 80px;
+  }
+  
+  .icon-item {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    border-radius: 4px;
+    background-color: #da5b4f;
+  }
+  
+  .icon-item:hover {
+    background-color: #df3324;
+  }
+  
+  .item-link {
+    position: absolute;
+    color: #fff;
+  }
+  
+  .twitter,
+  .google-plus {
+    left: 10px;
+    top: 10px;
+  }
+  
+  .facebook,
+  .linkedin {
+    left: 12px;
+    top: 10px;
+  }
+  
+  .btn-hide {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    top: 208px;
+    right: -20px;
+    color: #ff574d;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 7px 29px 0px;
+  }
+  
+  .btn-hide i:last-child {
+    display: none;
+  }
+  
+  .btn-hide i {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+  }
+  
+  .login-form {
+    width: 460px;
+    height: 100%;
+    border-radius: 0 10px 10px 0;
+    color: #717171;
+    background-color: #fff;
+  }
+  
+  input[type="checkbox"]#hide {
+    display: none;
+  }
+  
+  input[type="checkbox"]:checked ~ .login-form {
+    display: none;
+  }
+  
+  input[type="checkbox"]:checked ~ .form-aside {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  input[type="checkbox"]:checked ~ .form-aside .aside-header {
+    margin: 24px;
+  }
+  
+  input[type="checkbox"]:checked ~ .form-aside .aside-decs {
+    height: 144px;
+    margin: 0 32px;
+  }
+  
+  input[type="checkbox"]:checked ~ .form-aside .icon-list {
+    margin: 0 160px;
+  }
+  
+  input[type="checkbox"]:checked ~ .form-aside .btn-hide i:first-child {
+    display: none;
+  }
+  
+  input[type="checkbox"]:checked ~ .form-aside .btn-hide i:last-child {
+    display: block;
+  }
+  
+  .heading--h2 {
+    margin-top: 52px;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+    color: #272323;
+  }
+  
+  .heading-highlight {
+    color: #ff574d;
+  }
+  
+  .line {
+    margin: 16px auto;
+    width: 52px;
+    height: 1px;
+    background-color: #ff574d;
+  }
+  
+  .form-field {
+    outline: none;
+    border: 1px solid #e5e5e7;
+    border-radius: 4px;
+    width: 80%;
+    padding: 14px 20px;
+    margin-top: 20px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 7px 29px 0px;
+  }
+  
+  .note {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    width: 80%;
+    margin: 20px 45px;
+  }
+  
+  .note a {
+    color: #717171;
+  }
+  
+  .note a:hover {
+    color: #da5b4f;
+  }
+  
+  .btn--primary {
+    width: 80%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
+    background-color: #ff574d;
+  }
+  
+  .btn--primary:hover {
+    background-color: #ff453b;
+  }
+  
+  .question a {
+    color: #717171;
+  }
+  
+  .question a:hover {
+    color: #da5b4f;
+  }
+  
+  .question p {
+    display: inline-block;
+  }
+  
+  .checkbox__container {
+    position: relative;
+    padding: 0 28px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  .checkbox__container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  .checkbox__check-mark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background: #fff;
+    border: 2px solid #dcdcdc;
+    border-radius: 4px;
+  }
+  
+  .checkbox__container:hover input ~ .checkbox__check-mark {
+    background: #ffcbc6;
+  }
+  
+  .checkbox__container input:checked ~ .checkbox__check-mark {
+    background: #fff;
+  }
+  
+  .checkbox__check-mark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  .checkbox__container input:checked ~ .checkbox__check-mark:after {
+    display: block;
+  }
+  
+  .checkbox__container .checkbox__check-mark:after {
+    left: 6px;
+    top: 0px;
+    width: 4px;
+    height: 10px;
+    border: solid #000;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }

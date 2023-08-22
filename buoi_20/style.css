@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+  }
+  
+  .container {
+    max-width:800px;
+    margin: 40px auto;
+  }
+  li{
+    display: flex;
+    gap: 15px;
+    padding: 20px 0px;
+  }
+  img{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+
+  }
+  li:nth-child(even){
+    flex-direction: row-reverse;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    
+  }
+  .title{
+    margin-bottom: 1rem;
+  }

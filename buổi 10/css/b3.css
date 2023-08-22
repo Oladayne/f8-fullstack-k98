@@ -1,0 +1,169 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #43475a;
+}
+.BG{
+    width: 30%;
+    margin: auto;
+    position: relative;
+    transition: all 0.5s ease;
+    transform: translateY(15%);
+   
+}
+.dad{
+    margin: auto;
+    transition: all 0.5s ease;
+    padding-bottom: 80px;
+    transform-style: preserve-3d;
+    
+}
+.thu{  
+    margin: auto;
+    position: absolute;
+    width: 100%;
+    inset: 0;
+    border-width: 70px 200px;
+    border-style: solid;
+    border-color:  #9d4840 transparent transparent transparent;}
+.thu1{
+    margin: auto;
+    position: absolute;
+    width: 100%;
+    inset: 0;
+    border-width: 70px 200px;
+    border-style: solid;
+    border-color:  #642d28 transparent transparent transparent;
+   
+}
+
+.thu2{
+    margin: auto;
+    position: relative;
+    width: 100%;
+    margin-top: 60%;
+    inset: 0;
+    border-width: 70px 200px;
+    border-style: solid;
+    border-color: transparent #E16256 #E16256 #D9544A;
+    z-index: 3;
+    
+}
+.thiep{
+   position: absolute;
+    margin: auto ;
+    width: 80%;
+    transform-origin: 0 100%;
+    bottom:50%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 90px;
+    background: rgb(255, 255, 255);
+    transition: height 0.5s ease .7s; 
+
+
+}
+.shawdow{
+
+    position: absolute;
+    margin: auto;
+    width: 100%; 
+    height: 30px;
+    border-radius: 50%;
+    background: radial-gradient(#272727, #575656);
+    filter: blur(8px);
+    transition: all 0.5s ease;
+}
+.BG:hover .thiep{
+  height: 300px;
+}
+.BG:hover .thiep .line2::before{
+    visibility: visible;
+    transition-delay: 1s;
+}
+.thiep .line1::before{
+  width: 50%;
+  height: 25px;
+  content: '';
+  background-color: #E16256;
+  position: absolute;
+  left: 0;
+  top: 50px;
+}
+.thiep .line2::before{
+  width: 50px;
+  height: 50px;
+  content: '';
+  background-color: #b6a7a5;
+  position: absolute;
+  right: 0;
+  top:180px;
+  border-radius: 50%;
+  visibility: hidden;
+  transition-delay: 0.8s;
+}
+.thiep .round::before{
+    width: 40%;
+    height: 25px;
+    content: '';
+    background-color: #E16256;
+    position: absolute;
+    left: 0;
+    top:85px;
+  }
+.BG:hover .dad{
+    transform: translateY(15%);
+    transition: all 0.5s ease;
+    
+}
+
+.BG:hover .shawdow{
+    scale: 120%;
+    transition: all 0.5s ease;
+    filter: blur(2px)
+}
+.BG:hover .thu{
+    transform: rotateX(180deg);
+    transition: transform .5s ease;
+}
+.thu{
+
+    transform: translateZ(1px);
+    transform-origin: 100% 0;
+    transition: transform .5s ease 1.5s;
+   
+   
+}
+
+.thiep .dad2{
+   transform: translateX(1%);
+    width: 97%;
+    height: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+  
+}
+.cheo{
+    width: 15px;
+    height: 100%;
+    background-color:#E16256;
+    transform: skewX(-30deg);
+   
+}
+.vien{
+ 
+  height: 15px;
+  position: relative;
+  bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+    transform-origin: 0 0;
+    
+  
+
+}

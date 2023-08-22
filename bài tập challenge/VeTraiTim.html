@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+   
+
+.h{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  display: flex;
+    
+}
+
+.h span{
+  width: 50px;
+  height: 80px;
+  background: red;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  
+}
+
+
+.h span:nth-child(1){
+   transform: rotate(-45deg) translateX(20px);
+}
+.h span:nth-child(2){
+transform: rotate(45deg) translateX(-20px);
+}
+  </style>
+</head>
+<body>
+  <div class="h">
+    <span></span>
+    <span></span>
+  </div>
+ 
+</body>
+</html>

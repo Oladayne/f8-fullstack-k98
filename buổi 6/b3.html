@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body{
+            margin: unset;
+        }
+        section {
+        position: relative;
+        width: auto;
+        height: 100vh;
+        background-image: url('http://uiwebsoft.com/justlog/login-one/images/login-bg2.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin: none;
+        display: flex;
+  
+        
+        }
+        
+            
+        .box{
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            position: relative;
+            width:55%;
+            height: 60%;
+            align-self: center;
+        }
+        .box1{
+            z-index: 2;
+            flex: 1.5;
+            background-color: #ff574d;
+            color: white;
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+            text-align: center;
+            
+            line-height: 1.5;
+            position: relative;
+            box-sizing: border-box;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+        }
+        .box2{
+            z-index: 1;
+            flex: 2;
+            background-color: white;
+            color: black;
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+            text-align: center;
+            padding-top: 6%;
+            
+          
+        }
+        .Icon{
+            font-size: 28px;
+        }
+        .btn{
+            border: none;
+            background-color: white;
+            width: 45%;
+            height: 10%;
+            border-radius: 5px;
+            color: #ff574d;
+        }
+        .login{
+            color: #ff574d;
+        }
+        hr{
+            width: 10%;
+            
+            border-color: #ff574d;
+        }
+        .boxcon{
+            justify-content: space-between;
+            width: 70%;
+            margin: auto;
+        }
+        .box2 input{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 70%;
+            height: 8%;
+            margin-bottom: 25px;
+            border-color    : gray;
+        }
+        .boxcon a{
+          align-self: center;
+          text-decoration: none;
+          color: black;
+        }
+        .boxcon input{
+           
+            height: 10px;
+        }
+       
+        .box2 button{
+            border: none;
+            background-color: #ff574d;
+            color: white;
+            width: 70%;
+            height: 10%;
+            border-radius: 5px;
+        }
+        .end a{
+          text-decoration: none;
+          color: black;
+        }
+        .end{
+            margin-top: 3%;
+        }
+        .circle {
+           z-index: 999;
+            width: 40px;
+            content: '';
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgb(255, 255, 255);
+            grid-column: 1 / span 2;
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            transform: translate(-50%, -50%);
+            box-shadow: 3px 3px 3px rgba(128, 128, 128, 0.47);
+            color: #ff574d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+  
+}
+        input.check{
+            vertical-align: baseline;
+            
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+        .fogot{
+            width: 100px;
+            display: flex;
+        }
+        .fogot input{
+            flex: 1;
+        }
+        
+    </style>
+    
+</head>
+<body>
+    <section>
+        <div class="box">
+            <div class="box1">
+                <h1>Just Log</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt, voluptatem! Distinctio aut magni enim ullam.</p>
+                <button class="btn">Read More</button>
+                <p class="Icon">
+                    <i class="fa-brands fa-square-facebook"></i>
+                    <i class="fa-brands fa-square-twitter"></i>
+                    <i class="fa-brands fa-google-plus-g"></i>
+                    <i class="fa-brands fa-square-instagram"></i>
+                </p>
+                <div class="circle">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+            </div>
+            
+            <div class="box2">
+                <h1>Login to <span class="login">your account</span></h1>
+                <hr>
+                <input type="text" placeholder="Email Address">
+                <input type="text" placeholder="Password">
+                <div class="boxcon" style="display: flex;">
+                   <div class="fogot" >
+                    <input class="check" type="checkbox">
+                    <p>Remeber me</p>
+                   </div>
+                    <a href="">Forgot Password</a>
+                </div>
+                <button>LOGIN</button>
+               <div class="end">
+                <a href="">Don't have an account?</a>
+                <a href="">Register here</a>
+               </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
