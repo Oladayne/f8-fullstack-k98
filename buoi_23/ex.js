@@ -79,18 +79,33 @@ const btnRegister=document.querySelector(".btn-register");
 btnLogin.type = "button";
 btnRegister.type = "button";
 btnLogin.addEventListener('click', () => {
-   document.querySelector(".notice-login-fail").style="color:red;display: block;";
+  if(!ListInputLogin[0].value || !ListInputLogin[1].value){
+    console.log(1);
+    checkInputBlur(ListInputLogin, noticeLogin);
+  }
+  else{
+     document.querySelector(".notice-login-fail").style="color:red;display: block;";
    checkInputBlur(ListInputLogin, noticeLogin);
+  }
+  
 });
 btnRegister.addEventListener('click', () => {
    document.querySelector(".notice-login-fail").style="color:red;display: block;";
-   checkInputBlur(ListInputRegister,noticeRegister );
+   checkInputBlur(ListInputRegister,noticeRegister);
 });
 document.querySelector(".login-tab").addEventListener('click', () => {
   document.getElementById("overlay").style.display="block"
 });
 document.querySelector(".overlay").addEventListener('click', () => {
-  document.getElementById("overlay").style.display="none"
+  document.getElementById("overlay").style.display="none";
+    clearFields(nameRegister, emailRegister, passRegister);
+    resetTabStyles(nameRegister, emailRegister, passRegister);
+  clearNotices(noticeLogin);
+  resetTabStyles(input, inputId);
+  clearFields(input, inputId);
+  clearNotices(noticeRegister);
+  document.querySelector(".notice-login-fail").style="color:red;display: none;";
+
 });
 document.addEventListener("DOMContentLoaded", function() {
     var passwordInput = document.getElementById("password");
