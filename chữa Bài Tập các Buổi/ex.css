@@ -1,0 +1,17 @@
+/* CSS cho văn bản toggle */
+.password-toggle {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .toggle-text {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 14px;
+    color: blue; /* Thay đổi màu văn bản tùy ý */
+    text-decoration: underline; /* Thêm gạch chân tùy ý */
+  }
+  

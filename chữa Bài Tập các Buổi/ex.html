@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Toggle</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js"></script>
+</head>
+<body>
+    <div class="password-toggle">
+        <input type="password" id="passwordInput" placeholder="Password" class="btn-cha">
+        <button class="btn" id="toggleButton">Show Password</button>
+    </div>
+    <script>
+        $(document).ready(function() {
+            var passwordInput = document.getElementById("passwordInput");
+            var toggleButton = document.getElementById("toggleButton");
+
+            // Đăng ký sự kiện click cho nút toggle
+            toggleButton.addEventListener("click", togglePasswordVisibility);
+
+            // Biến để theo dõi trạng thái hiển thị của mật khẩu
+            var passwordVisible = false;
+
+            // Hàm để chuyển đổi hiển thị mật khẩu
+            function togglePasswordVisibility() {
+                passwordVisible = !passwordVisible;
+                if (passwordVisible) {
+                    passwordInput.type = "text"; // Hiển thị mật khẩu dưới dạng văn bản
+                    toggleButton.textContent = "Hide Password"; // Thay đổi văn bản của nút
+                } else {
+                    passwordInput.type = "password"; // Ẩn mật khẩu
+                    toggleButton.textContent = "Show Password"; // Thay đổi văn bản của nút
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+1

@@ -1,53 +1,41 @@
 console.log("Bai 1");
-function sum(...args) {
-    var total = 0;
-    for (var i = 0 ; i < args.length ; i++ ){
-        if (typeof args[i] !== "number") {
-            return "false"
-        } else {
-            total += args[i];
-        }
-    }
-    return  "SUM IS :" + total;
-}
-console.log(sum(1, 2, 3));
-console.log(sum(1, 2, "3"));
+var total = (...args) =>
+  args.every(Number) ? args.reduce((a, b) => +a + +b) : "Invalid Data!";
+console.log(total(9, "2", "1", "a"));
+console.log(total(9, "2", "1", [4], true));
 
 console.log("======");
 console.log("Bai 2");
-function getCurrency(amount, currency) {
-    if (typeof currency !== 'string') {
-      throw new Error("Nhập chuỗi cho đơn vị tiền");
-    }
-    if (currency === 'đ') {
-      currency = 'VND';
-    }
-   var money = typeof amount === 'string' ? parseFloat(amount) : amount;
-    if (isNaN(money)) {
-      throw new Error("Giá trị không hợp lệ");
-    }
-   var formatted = new Intl.NumberFormat('vi-VN', {
-      style: 'currency',
-      currency: currency,
-    }).format(money);
-    return formatted;
-  }
-  
-  var price2 = "12000000";
-console.log(getCurrency(price2, 'đ')); 
+Object.prototype.getCurrency = function (unit) {
+  return this.toLocaleString("en") + " " + unit;
+};
+var price = 120000000000;
+console.log(price.getCurrency("đ"));
   
 console.log("======");
 console.log("Bai 3");
-Array.prototype.push2 = function (...items) {
-    for (var i = 0; i < items.length; i++){
-        this[this.length] = items[i];
-    }
-    return this;
-}
-console.log("Vi Du");
-var S = [1, 2, 3];
-var SPlus = S.push2(4);
-console.log(SPlus);
+// Array.prototype.push2 = function (...items) {
+//     for (var i = 0; i < items.length; i++){
+//         this[this.length] = items[i];
+//     }
+//     return this;
+// }
+Array.prototype.push2 = function (...args) {
+  for (var i = 0; i < args.length; i++) {
+    this[this.length] = args[i];
+  }
+  return this.length;
+};
+var arr = [ 3, 4, "5", undefined];
+console.log(arr.push2(9, 4, "4", undefined));
+console.log(arr);
+console.log(arr.push("a", 1, 2, 3));
+console.log(arr);
+
+// console.log("Vi Du");
+// var S = [1, 2, 3];
+// var SPlus = S.push2(4);
+// console.log(SPlus);
 
 console.log("======");
 console.log("Bai 4");
