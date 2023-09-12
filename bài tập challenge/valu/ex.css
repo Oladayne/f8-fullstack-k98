@@ -1,0 +1,38 @@
+input[type="text"] {
+    width: 70%;
+    padding: 5px;
+    margin-right: 5px;
+}
+
+button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+.todo-list > div {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f8f8f8;
+}
+.todo-list button {
+    background-color: #28a745;
+}
+
+.todo-list button:hover {
+    background-color: #218838;
+}
+
+.todo-list button.delete {
+    background-color: #dc3545;
+}
+
+.todo-list button.delete:hover {
+    background-color: #c82333;
+}

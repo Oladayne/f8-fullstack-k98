@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ví dụ về .value</title>
+    <link rel="stylesheet" href="ex.css">
+</head>
+<body>
+    <div class="todo-app">
+        <div class="todo-form">
+            <form id="todoForm">
+                <input type="text" id="newTodo" placeholder="Thêm công việc mới">
+                <button type="submit">Thêm</button>
+            </form>
+        </div>
+        <div class="todo-list" id="todoList">
+        </div>
+    </div>
+
+    <script>
+        const todoForm = document.getElementById('todoForm');
+        const newTodoInput = document.getElementById('newTodo');
+        const todoList = document.getElementById('todoList');
+        let isEditMode = false; 
+        let editItem = null; 
+
+        todoForm.addEventListener('submit', function (e) {
+            e.preventDefault(); 
+            const newTodoText = newTodoInput.value;
+
+            if (newTodoText) {
+                if (isEditMode) {
+                    saveEditedTodo();
+                } else {
+                    const newTodoItem = createTodoItem(newTodoText);
+                    todoList.appendChild(newTodoItem);
+                }
+                newTodoInput.value = '';
+            }
+        });
+
+        function createTodoItem(todoText) {
+    const todoItem = document.createElement('div');
+
+    const todoContent = document.createElement('input'); 
+    todoContent.type = 'text';
+    todoContent.value = todoText;
+    todoContent.setAttribute('readonly', 'true');
+
+    const editButton = document.createElement('button');
+    editButton.textContent = 'EDIT';
+    editButton.onclick = function () {
+        editTodoItem(todoContent, editButton, deleteButton);
+    };
+
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Xóa';
+    deleteButton.onclick = function () {
+        deleteTodoItem(todoItem);
+    };
+
+    todoItem.appendChild(todoContent);
+    todoItem.appendChild(editButton);
+    todoItem.appendChild(deleteButton);
+
+    return todoItem;
+}
+
+function editTodoItem(todoContent, editButton, deleteButton) {
+    if (todoContent.readOnly) {
+        todoContent.readOnly = false;
+        editButton.style.display = 'inline';
+        deleteButton.style.display = 'none'; 
+    } else {
+        todoContent.readOnly = true;
+        editButton.style.display = 'inline';
+        deleteButton.style.display = 'inline'; 
+    }
+}
+
+        function saveEditedTodo() {
+            if (editItem) {
+                editItem.readOnly = true;
+                editItem.nextElementSibling.style.display = 'inline'; 
+                editItem.previousElementSibling.textContent = 'EDIT'; 
+                editItem = null;
+            }
+        }
+
+        function deleteTodoItem(item) {
+            todoList.removeChild(item);
+        }
+    </script>
+</body>
+</html>
