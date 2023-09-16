@@ -40,6 +40,7 @@
                 var index = parseInt(this.getAttribute("data-index"));
                 position = -itemWidth * index;
                 carouselInner.style.transform = `translateX(${position}px)`;
+                carouselInner.style.transition = null;
                 updateDots();
             });
             carouselDots.appendChild(dotButton); 
@@ -106,12 +107,15 @@
     
         if (Math.abs(deltaX) < threshold) {
             carouselInner.style.transform = `translateX(${position}px)`;
+            carouselInner.style.transition = null;
         } else {
             if (Math.abs(position) + itemWidth === totalWidth) {
                 carouselInner.style.transform = `translateX(${position}px)`;
+                carouselInner.style.transition = null;
             }
             if (Math.abs(position) < itemWidth) {
                 carouselInner.style.transform = `translateX(${position}px)`;
+                carouselInner.style.transition = null;
             }
         }
         updateDots();
