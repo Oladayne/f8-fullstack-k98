@@ -1,35 +1,163 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-   
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ví dụ về .value</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-<link rel="stylesheet" href="ex.css">
-    
 </head>
+<style>
+  .background{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-color: rgb(183, 58, 228);
+}
+.todo-app{
+  background-color: rgb(47, 28, 65);
+    color: aliceblue;
+    
+    width: 30%;
+    margin: auto;
+    margin-top: 10%;
+    text-align: center;
+    padding-bottom: 2rem;
+    padding-top: 1rem;
+}
+ #newTodo{
+    height: 40px;
+    width: 300px;
+    border: 1px solid rgb(183, 58, 228);
+    background-color:rgb(47, 28, 65) ;
+    color: aliceblue;
+    padding: 0 1rem;
+    outline: none;
+    margin-bottom: 1rem;
+ }
+ #todoForm{
+  margin-bottom: 1rem;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+ }
+ .todo-form button{
+  height: 40px;
+    background-color:rgb(183, 58, 228) ;
+    border: 1px solid rgb(183, 58, 228);
+   padding: 0 1rem;
+ }
+ .icon{
+  background: none;
+  color: aliceblue;
+  border: none;
+  position: absolute;
+  right: 0;
+  top: 50%;
+
+ }
+</style>
 <body>
-    <div class="background">  </div>
+  <div class="background">  </div>
     <div class="todo-app">
       <div class="title">
         <h2>Get Things Done !</h2>
     </div>
-      
         <div class="todo-form">
             <form id="todoForm">
-                <input type="text" id="newTodo" class="newTodo" placeholder="Thêm công việc mới">
-                <button type="submit" class="submit">Thêm</button>
+                <input type="text" id="newTodo" placeholder="Thêm công việc mới">
+                <button type="submit">Thêm</button>
             </form>
         </div>
         <div class="todo-list" id="todoList">
         </div>
     </div>
 
-    <script src="ex.js"></script>
+    <script>
+        const todoForm = document.getElementById('todoForm');
+        const newTodoInput = document.getElementById('newTodo');
+        const todoList = document.getElementById('todoList');
+        let isEditMode = false; 
+        let editItem = null; 
+
+        todoForm.addEventListener('submit', function (e) {
+            e.preventDefault(); 
+            const newTodoText = newTodoInput.value;
+
+            if (newTodoText) {
+                if (isEditMode) {
+                    saveEditedTodo();
+                } else {
+                    const newTodoItem = createTodoItem(newTodoText);
+                    todoList.appendChild(newTodoItem);
+                }
+                newTodoInput.value = '';
+            }
+        });
+
+        function createTodoItem(todoText) {
+    const todoItem = document.createElement('div');
+    todoItem.style.display='flex';
+    todoItem.style.position='relative';
+    const todoContent = document.createElement('input'); 
+    todoContent.type = 'text';
+    todoContent.value = todoText;
+    todoContent.setAttribute('readonly', 'true');
+    todoContent.style=" display: flex; justify-content: space-between; align-items: center; width:90%; margin: auto; background-color:rgb(183, 58, 228) ; color: aliceblue; padding: .7rem 1rem;border-radius: 5px; margin-bottom: 1rem;";
+
+    const editButton = document.createElement('button');
+    editButton.classList.add("icon");
+    editButton.innerHTML='<i class="fa-solid fa-pen-to-square"></i>';
+    editButton.onclick = function () {
+        editTodoItem(todoContent, editButton, deleteButton);
+    };
+
+    const deleteButton = document.createElement('button');
+    deleteButton.classList.add("icon");
+    deleteButton.innerHTML='<i class="fa-solid fa-trash"></i>';
+    deleteButton.onclick = function () {
+        deleteTodoItem(todoItem);
+    };
+
+    todoItem.appendChild(todoContent);
+    todoItem.appendChild(editButton);
+    todoItem.appendChild(deleteButton);
+
+    return todoItem;
+}
+
+function editTodoItem(todoContent, editButton, deleteButton) {
+    if (todoContent.readOnly) {
+        todoContent.readOnly = false;
+        editButton.style.display = 'inline';
+        editButton.innerHTML='Thêm';
+        editButton.style=" height: 40px; background-color:rgb(183, 58, 228) ;border: 1px solid rgb(183, 58, 228); padding: 0 1rem;display:inline;"
+        todoContent.style="height: 40px; width: 300px; border: 1px solid rgb(183, 58, 228);  background-color:rgb(47, 28, 65) ; color: aliceblue; padding: 0 1rem;  outline: none; margin-bottom: 1rem;";
+
+        deleteButton.style.display = 'none'; 
+    } else {
+      editButton.innerHTML='<i class="fa-solid fa-pen-to-square"></i>';
+        editButton.style="display:inline;"
+
+        todoContent.readOnly = true;
+        editButton.style.display = 'inline';
+        deleteButton.style.display = 'inline'; 
+    }
+}
+
+        function saveEditedTodo() {
+            if (editItem) {
+
+                editItem.readOnly = true;
+                editItem.nextElementSibling.style.display = 'inline'; 
+                editItem.previousElementSibling.textContent = 'EDIT'; 
+                editItem = null;
+            }
+        }
+
+        function deleteTodoItem(item) {
+            todoList.removeChild(item);
+        }
+    </script>
 </body>
 </html>

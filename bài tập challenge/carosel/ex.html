@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        img{
+            max-width: 100%;
+            height: auto;
+        }
+        .carousel{
+            position: relative;
+            overflow: hidden;
+        }
+        .carousel-inner{
+            display: flex;
+            transition: transform 0.4s ease;
+        }
+        .carousel-nav span{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            width: 40px;
+            height: 40px;
+            background-color: gray;
+            color: wheat;
+            font-size: 2rem;
+            font-weight: bold;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .carousel-nav span.prev{
+            left: 5px;
+        }
+        .carousel-nav span.next{
+            right: 5px;
+        }
+        .carousel-dots{
+            text-align: center;
+            margin-top: 10px;
+        }
+        .carousel-dots button{
+            width: 10px;
+            height: 10px;
+            border: none;
+            border-radius: 50%;
+            background-color: gray;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="carousel">
+        <div class="carousel-inner">
+            <div class="item">
+                <img src="https://fastly.picsum.photos/id/477/1600/500.jpg?hmac=I-qa7V08x10G2aesC-suFPuq7mhWeokzlpGioQr7m1g" alt="">
+            </div>
+            <div class="item">
+                <img src="https://fastly.picsum.photos/id/28/1600/500.jpg?hmac=1BeWgOfsUSwDvKkttT70_icG3Cv1hAXI4xXhqHpoqUQ" alt="">
+            </div>
+            <div class="item">
+                <img src="https://fastly.picsum.photos/id/28/1600/500.jpg?hmac=1BeWgOfsUSwDvKkttT70_icG3Cv1hAXI4xXhqHpoqUQ" alt="">
+            </div>
+            <!-- Thêm nhiều hơn các ảnh khác ở đây -->
+        </div>
+        <div class="carousel-nav">
+            <span class="prev">&lt;</span>
+            <span class="next">&gt;</span>
+        </div>
+        <div class="carousel-dots"></div>
+    </div>
+
+    <script>
+        var carousel = document.querySelector('.carousel');
+        var carouselInner = carousel.querySelector('.carousel-inner');
+        var carouselItems = carouselInner.children;
+        var carouselNextBtn = carousel.querySelector('.carousel-nav .next');
+        var carouselPrevBtn = carousel.querySelector('.carousel-nav .prev');
+        var carouselDots = carousel.querySelector('.carousel-dots');
+        var itemWidth = carouselItems[0].clientWidth;
+        var totalWidth = carouselItems.length * itemWidth;
+        carouselInner.style.width = `${totalWidth}px`;
+        var position = 0;
+        var positions = [];
+
+        carouselNextBtn.addEventListener('click', function () {
+            if (Math.abs(position) + itemWidth * 2 > totalWidth) {
+                return;
+            }
+            position -= itemWidth;
+            carouselInner.style.transform = `translateX(${position}px)`;
+            updateDots();
+        });
+
+        carouselPrevBtn.addEventListener('click', function () {
+            if (Math.abs(position) < itemWidth) {
+                return;
+            }
+            position += itemWidth;
+            carouselInner.style.transform = `translateX(${position}px)`;
+            updateDots();
+        });
+
+
+        function createDots() {
+            for (let i = 0; i < carouselItems.length; i++) {
+                var dotButton = document.createElement("button");
+                dotButton.classList.add("dot");
+                dotButton.setAttribute("data-index", i);
+                dotButton.addEventListener("click", function () {
+                    var index = parseInt(this.getAttribute("data-index"));
+                    position = -itemWidth * index;
+                    carouselInner.style.transform = `translateX(${position}px)`;
+                    updateDots();
+                });
+                carouselDots.appendChild(dotButton);
+            }
+        }
+
+        function updateDots() {
+            var dotButtons = carouselDots.querySelectorAll(".dot");
+            for (let i = 0; i < dotButtons.length; i++) {
+                dotButtons[i].classList.remove("active");
+            }
+            var currentIndex = Math.abs(position) / itemWidth;
+            dotButtons[currentIndex].classList.add("active");
+        }
+        createDots();
+    </script>
+</body>
+</html>
