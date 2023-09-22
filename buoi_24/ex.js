@@ -1,104 +1,69 @@
-const todoForm = document.getElementById('todoForm');
-        const newTodoInput = document.getElementById('newTodo');
-        const todoList = document.getElementById('todoList');
-        let isEditMode = false; 
-        let editItem = null; 
+const listTasks = document.querySelector('.list-task');
+const btnAddTask = document.querySelector('.btn-addTask');
+const inputTodo = document.querySelector('.input-todo');
+let itemInput, edits, deletes, taskItem, taskItemEdit, btnAddTaskEdit, inputEdits, lis;
+let arrItemInput, arrEdit, arrDelete, arrtaskItem, arrTaskItemEdit, arrbtnAddTaskEdit, arrinputEdit;
 
-        todoForm.addEventListener('submit', function (e) {
-            e.preventDefault(); 
-            const newTodoText = newTodoInput.value;
-
-            if (newTodoText) {
-                if (isEditMode) {
-                    saveEditedTodo();
-                } else {
-                    const newTodoItem = createTodoItem(newTodoText);
-                    todoList.appendChild(newTodoItem);
-                }
-                newTodoInput.value = '';
-            }
-        });
-
-        function createTodoItem(todoText) {
-    const todoItem = document.createElement('div');
-    todoItem.classList.add("list-task")
-    todoItem.classList.add("list")
-    const todoContent = document.createElement('input'); 
-    todoContent.type = 'text';
-    todoContent.value = todoText;
-    todoContent.setAttribute('readonly', 'true');
-    const icon =document.createElement('div');
-    icon.classList.add("icon")
-    icon.classList.add("u-icon")
-
-    const editButton = document.createElement('button');
-    editButton.innerHTML = ' <i id="edit" class="fa-solid fa-pen-to-square"></i>';
-    editButton.onclick = function () {
-        editTodoItem(todoContent, editButton, deleteButton);
-    };
-
-    const deleteButton = document.createElement('button');
-    deleteButton.innerHTML= ` <i id="xoa" class="fa-solid fa-trash"></i>`;
-    deleteButton.onclick = function () {
-        deleteTodoItem(todoItem);
-    };
-
-    todoItem.appendChild(todoContent);
-    
-    
-    icon.appendChild(editButton);
-    icon.appendChild(deleteButton);
-    todoItem.appendChild(icon);
-    return todoItem;
-}
-
-function editTodoItem(todoContent, editButton, deleteButton) {
-  const todoItem =document.querySelector(".list");
-  const styleButton = document.querySelector(".submit").style;
- const styleIcon=document.querySelector(".u-icon");
-    if (todoContent.readOnly) {
-        todoContent.readOnly = false;
-        
-        editButton.style.display = 'inline';
-        editButton.classList.add("submit");
-        editButton.innerHTML='Thêm';
-        styleIcon.classList.remove("icon");
-        
-
-
-        deleteButton.style.display = 'none'; 
-        
-        todoContent.classList.add("newTodo");
-        todoItem.classList.remove("list-task");
-        todoItem.style.display="flex";
-        
-    } else {
-      todoContent.classList.remove("newTodo");
-     
-        todoItem.classList.add("list-task");
-        todoContent.readOnly = true;
-        editButton.style.display = 'inline';
-        deleteButton.style.display = 'inline'; 
-        editButton.classList.remove("submit");
-        editButton.innerHTML='<i id="edit" class="fa-solid fa-pen-to-square"></i>';
-        styleIcon.classList.add("icon");
+btnAddTask.onclick = ()=>{
+    let value = inputTodo.value;
+    if(value){
+        const li = document.createElement('li');
+        li.innerHTML = 
+        `
+            <div class="task-item">
+                <div class="item">
+                    <input type="text" value="${value}" disabled class="item-input" >
+                </div>
+                <div class="icon">
+                    <span class="edit"><i class="fa-solid fa-pen-to-square"></i></span>
+                    <span class="delete"><i class="fa-solid fa-trash"></i></span>
+                </div>
+            </div>
+            <div class="task-item-edit">
+                <div class="task-input">
+                    <input type="text" class="input-edit" >
+                </div>
+                <button class="btn-addTask btn-addTask-Edit ">Add Task</button>
+            </div>
+        `
+        listTasks.appendChild(li);
+        inputTodo.value = ''
+    }else{
+        alert('Enter something !!!');
+        inputTodo.focus()
     }
+    itemInput = document.querySelectorAll('.item-input');
+    edits = document.querySelectorAll('.edit');
+    lis = document.querySelectorAll('li');
+    deletes = document.querySelectorAll('.delete');
+    taskItem = document.querySelectorAll('.task-item');
+    taskItemEdit = document.querySelectorAll('.task-item-edit');
+    btnAddTaskEdit = document.querySelectorAll('.btn-addTask-Edit');
+    inputEdits = document.querySelectorAll('.input-edit');
+    arrItemInput = Array.from(itemInput);
+    arrEdit = Array.from(edits);
+    arrDelete = Array.from(deletes);
+    arrtaskItem = Array.from(taskItem);
+    arrTaskItemEdit = Array.from(taskItemEdit);
+    arrbtnAddTaskEdit = Array.from(btnAddTaskEdit);
+    arrinputEdit = Array.from(inputEdits);
+    arrli = Array.from(lis);
+
+    arrEdit.forEach((el, index)=>{
+        el.addEventListener('click', ()=>{
+            arrtaskItem[index].style.display = 'none';
+            arrTaskItemEdit[index].style.display = 'flex';
+            arrinputEdit[index].value = arrItemInput[index].value;
+            arrbtnAddTaskEdit[index].addEventListener('click', ()=>{
+                arrtaskItem[index].style.display = 'flex';
+                arrTaskItemEdit[index].style.display = 'none';
+                arrItemInput[index].value = arrinputEdit[index].value
+            })
+        })
+    })
+    arrDelete.forEach((el, index)=>{
+        el.addEventListener('click', ()=>{
+            arrli[index].remove()
+        })
+    })
 }
-
-        function saveEditedTodo() {
-         const styleIcon =document.querySelector("u-icon")
-            if (editItem) {
-              const editButton =document.querySelector(".submit");
-              editButton.classList.remove("submit");
-                editButton.innerHTML='<i id="edit" class="fa-solid fa-pen-to-square"></i>';
-                styleIcon.classList.add("icon");
-                editItem.readOnly = true;
-                editItem.nextElementSibling.style.display = 'inline'; 
-                editItem.previousElementSibling.textContent = 'EDIT'; 
-                editItem = null;
-            }
-        }
-
-        function deleteTodoItem(item) {
-            todoList.removeChild(item);
-        }

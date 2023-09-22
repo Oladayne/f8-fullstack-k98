@@ -155,3 +155,20 @@ audio.addEventListener("ended", function () {
     isPlaying = false;
     
 });
+var nextBtn = document.querySelector(".player.next-btn");
+
+nextBtn.addEventListener("click", function () {
+    if (currentTrackIndex < audioTracks.length - 1) {
+        currentTrackIndex++; // Tăng chỉ số bài hát hiện tại lên
+        loadAndPlayTrack(audioTracks[currentTrackIndex]);
+    } else {
+        // Nếu đó là bài hát cuối cùng, bạn có thể xử lý điều gì tiếp theo, ví dụ: quay lại phát từ đầu.
+        // Ví dụ, bạn có thể bỏ dấu chú thích ở dòng sau để quay lại phát từ bài hát đầu tiên:
+        // currentTrackIndex = 0;
+    }
+});
+function loadAndPlayTrack(trackUrl) {
+    audio.src = trackUrl; // Tải bài hát âm thanh mới
+    audio.play(); // Bắt đầu phát bài hát mới
+    // Bạn cũng có thể cập nhật bất kỳ phần tử giao diện người dùng khác liên quan nào khác ở đây (ví dụ: tiêu đề bài hát, thời lượng).
+}
