@@ -1,0 +1,11 @@
+@mixin gridContainer($column, $spacing) {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: $spacing;
+    margin-left: calc(-1 * $spacing);
+
+    > * {
+        width: calc(100% / $column - $spacing);
+        margin-left: $spacing;
+    }
+}
