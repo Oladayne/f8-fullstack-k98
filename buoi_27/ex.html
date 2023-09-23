@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="ex.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="menu">
+            <div class="logo">
+                Lizz <span>Dev</span>
+            </div>
+            <ul>
+                <li class="active"><i class="fa-solid fa-house"></i>Home</li>
+                <li><i class="fa-solid fa-user"></i>User</li>
+                <li><i class="fa-solid fa-heart"></i>Favourite</li>
+            </ul>
+            <ul>
+                <li><i class="fa-brands fa-tiktok"></i>Tiktok</li>
+                <li><i class="fa-brands fa-facebook"></i>FaceBook</li>
+                <li><i class="fa-brands fa-instagram"></i>Instagram</li>
+            </ul>
+        </div>
+        <div class="center">
+            <div class="search">
+                <div class="form">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search.....">
+                    <button>Search</button>
+                </div>
+            </div>
+            <h2>PRODUCT</h2>
+            <div class="list">
+                <div class="item" data-key="1">
+                    <div class="img">
+                        <img src="img/Alejandro Favela on X (1).jpg " width="200px" height="200px" alt="">
+                    </div>
+                    <div class="content">
+                        <div class="title">Nami</div>
+                        <div class="des">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo unde recusandae incidunt soluta veniam ipsa sed id nesciunt consectetur sequi?</div>
+                        <div class="price">366.000.000</div>
+                        <input type="number" class="count" min="1" value="1">
+                        <button class="add">Add to cart</button>
+                        <div class="allPriceProduct"></div>
+                        <button class="remove" onclick="Remove(1)"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                </div>
+                <div class="item" data-key="2">
+                    <div class="img">
+                        <img src="img/Alejandro Favela on X.jpg" width="200px" height="200px" alt="">
+                    </div>
+                    <div class="content">
+                        <div class="title">Zoro</div>
+                        <div class="des">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo unde recusandae incidunt soluta veniam ipsa sed id nesciunt consectetur sequi?</div>
+                        <div class="price">1.111.000.000</div>
+                        <input type="number" class="count" min="1" value="1">
+                        <button class="add">Add to cart</button>
+                        <div class="allPriceProduct"></div>
+                        <button class="remove"  onclick="Remove(2)"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                </div>
+                <div class="item" data-key="3">
+                    <div class="img">
+                        <img src="img/download (2).jpg " width="200px" height="200px" alt="">
+                    </div>
+                    <div class="content">
+                        <div class="title">Robin</div>
+                        <div class="des">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo unde recusandae incidunt soluta veniam ipsa sed id nesciunt consectetur sequi?</div>
+                        <div class="price">130.000.000</div>
+                        <input type="number" class="count" min="1" value="1">
+                        <button class="add">Add to cart</button>
+                        <div class="allPriceProduct"></div>
+                        <button class="remove"  onclick="Remove(3)"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                </div>
+                <div class="item" data-key="4">
+                    <div class="img">
+                        <img src="img/Sanji.jpg"  alt="">
+                    </div>
+                    <div class="content">
+                        <div class="title">Sanji</div>
+                        <div class="des">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo unde recusandae incidunt soluta veniam ipsa sed id nesciunt consectetur sequi?</div>
+                        <div class="price">1.032.000.000</div>
+                        <input type="number" class="count" min="1" value="1">
+                        <button class="add">Add to cart</button>
+                        <div class="allPriceProduct"></div>
+                        <button class="remove"  onclick="Remove(4)"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cart">
+            <div class="name">
+                Cart
+            </div>
+            <div class="listCart">
+
+            </div>
+            <div class="catch">
+                <div class="contentCatch">Tổng</div>
+                <div class="SL">SL:<span class="sl"></span></div>
+                <div class="allCatch">Beli:<span class="money"></span></div>
+            </div>
+            <div class="btn">
+                <button class="removeAll">Remove-All</button>
+                <button class="update">Update</button>
+            </div>
+        </div>
+    </div>
+    <script src="ex.js"></script>
+</body>
+</html>
