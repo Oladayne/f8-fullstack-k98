@@ -101,3 +101,34 @@
     cursor: pointer;
    
 }
+.container{
+    width: 1200px;
+    margin: auto;
+}
+.karaoke{
+    height: 80vh;
+    background-color: rgb(38, 17, 58);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 2rem;
+}
+.karaoke .karaoke-content{
+    text-align: center;
+}
+.karaoke .karaoke-content p{
+    margin: 10px 0;
+}
+.karaoke .karaoke-content .word{
+    position: relative;
+    white-space: nowrap;
+}
+.karaoke .karaoke-content .word span{
+    position: absolute;
+    left: 0;
+    overflow: hidden;
+    width: 0;
+    color: yellow;
+}

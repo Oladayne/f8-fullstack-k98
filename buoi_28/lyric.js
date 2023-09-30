@@ -2906,63 +2906,6 @@ var lyric = `{
     "timestamp": 1695611866147
 }`
 
-// var lyric = `{
-//     "err": 0,
-//     "msg": "Success",
-//     "data": {
-//         "sentences": [
-//             {
-//                 "words": [
-//                     {
-//                         "startTime": 14200,
-//                         "endTime": 14470,
-//                         "data": "Em"
-//                     },
-//                     {
-//                         "startTime": 14470,
-//                         "endTime": 14730,
-//                         "data": "có"
-//                     },
-//                     {
-//                         "startTime": 14730,
-//                         "endTime": 15000,
-//                         "data": "gì"
-//                     },
-//                     {
-//                         "startTime": 15000,
-//                         "endTime": 15260,
-//                         "data": "đâu"
-//                     },
-               
-//                     {
-//                         "startTime": 15260,
-//                         "endTime": 15520,
-//                         "data": "Ngoài"
-//                     },
-//                     {
-//                         "startTime": 15520,
-//                         "endTime": 15800,
-//                         "data": "những"
-//                     },
-//                     {
-//                         "startTime": 15800,
-//                         "endTime": 16320,
-//                         "data": "vết"
-//                     },
-//                     {
-//                         "startTime": 16320,
-//                         "endTime": 16860,
-//                         "data": "thương"
-//                     },
-//                     {
-//                         "startTime": 16860,
-//                         "endTime": 19260,
-//                         "data": "sâu"
-//                     }
-                
-//             },
-//         ]
-              
-//     },
-   
-// }`
+
+lyric = JSON.parse(lyric);
+lyric = lyric.data.sentences
