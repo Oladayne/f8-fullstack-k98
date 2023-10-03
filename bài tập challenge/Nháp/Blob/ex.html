@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Blob</title>
+    <style>
+        /* CSS cho menu */
+        .context-menu {
+            display: none;
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .context-menu-item {
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        .context-menu-item:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <button id="show-menu">Hiển thị Menu</button><!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tạo và tải về tệp PDF</title>
+        <script src="html2pdf.bundle.min.js"></script>
+    </head>
+    <body>
+        <div id="pdf-content">
+            <h1>Đây là tiêu đề</h1>
+            <p>Đây là nội dung của tệp PDF.</p>
+        </div>
+        <button id="generate-pdf">Tạo và tải PDF</button>
+    
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const generatePdfButton = document.getElementById("generate-pdf");
+                const pdfContent = document.getElementById("pdf-content");
+    
+                generatePdfButton.addEventListener("click", function() {
+                    const elementToConvert = pdfContent;
+                    html2pdf()
+                        .from(elementToConvert)
+                        .set({ margin: 10, filename: "document.pdf", image: { type: "jpeg", quality: 0.98 }, html2canvas: { scale: 2 }, jsPDF: { unit: "mm", format: "a4", orientation: "portrait" } })
+                        .outputPdf()
+                        .then(function(pdf) {
+                            // Tải tệp PDF xuống
+                            pdf.save();
+                        });
+                });
+            });
+        </script>
+    </body>
+    </html>
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.71/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="ex.js"></script>
+</body>
+</html>

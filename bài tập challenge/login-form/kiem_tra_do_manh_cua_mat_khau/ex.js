@@ -22,6 +22,8 @@ password.oninput = function () {
                 condition = /[^0-9a-zA-Z]/.test(value);
                 break;
             case 4:
+                condition = value.length >= 6;
+                break;
             default:
                 break;
         }
@@ -32,20 +34,24 @@ password.oninput = function () {
         // Cập nhật trạng thái của ô kiểm dựa trên điều kiện
         checkbox.checked = condition;
     });
-    let widthPower = ['1%','25%','50%','75%','100%'];
-    let colorPower = ['#D73F40', '#DC6551', '#F2B84F', '#BDE952', '#30CEC7'];
+    let widthPower = ['1%','16.6%','33.3%','49.9%','66.6%','100%'];
+    let colorPower = ['#D73F40', '#DC6551', '#F2B84F', '#BDE952', '#30CEC7','#00d600'];
     
     if (value.length >= 1) {
         let arrayTest = [
             /[0-9]/,
             /[a-z]/,
             /[A-Z]/,
-            /[^0-9a-zA-Z]/];
+            /[^0-9a-zA-Z]/,
+        ];
         arrayTest.forEach(item => {
             if (item.test(value)) {
                 point += 1;
             }
         });
+    }
+    if (value.length >= 6) {
+        point += 1;
     }
     power.style.width = widthPower[point];
     power.style.backgroundColor = colorPower[point];

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="ex.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <div id="wrapper">
+        <div class="main-control">
+            <div class="control">
+                <div class="dropdown">
+                    <button class="btn-dropdown" data-bs-toggle="dropdown"> File</button>
+                    <div class="dropdown-menu">
+                        <button id="new-btn" class="dropdown-item">New</button>
+                        <button id="txt-btn" class="dropdown-item">Save as TXT</button>
+                        <button id="pdf-btn" class="dropdown-item">Save as PDF</button>
+                    </div>
+                </div>
+            
+
+                <div id="title">
+                <input id="title-box" type="text" value="untitled" placeholder="Your Title"/>
+                </div>
+            </div>
+            
+            <hr>
+            <div id="toolbar">
+                <button id="bold"><i class="fa fa-bold"></i></button>
+                <button id="italic"><i class="fa fa-italic"></i></button>
+                <button id="underline"><i class="fa fa-underline"></i></button>
+                <button id="font"><i class="fa fa-font"></i></button>
+                    <input type="color" value="#181818" id="colorPicker">
+            </div>
+        </div>
+       
+       
+        <div id="textField"  class="editor"  contenteditable="true"></div>
+        <div class="count">
+            <span class="characters">Số ký tự : 0</span> 
+            <span class="words">Số từ : 0</span>
+        </div>
+       
+    </div>
+    
+    <script src="ex.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+    integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>

@@ -2,32 +2,97 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Document</title>
     <link rel="stylesheet" href="ex.css">
 </head>
 <body>
     <div class="container">
-        <div class="form" id="form">
-            <!-- login -->
+        
+        <div class="form login" id="form">
             <div class="content">
                 <h1>Login</h1>
                 <div class="group">
-                    <input type="text" class="inputText" placeholder=" " required>
-                    <label for="">User Name</label>
+                    <input type="text" id="username-login" class="inputText" placeholder=" " required>
+                    <label for="username-login">Username</label>
+                </div>
+                <div class="group forpass">
+                    <input type="password" id="pass-login" class="inputText" placeholder=" " required>
+                    <label for="pass-login">Password</label>
+                    <span id="showPasswordLogin">
+                        <ion-icon name="eye-outline"></ion-icon>
+                        <ion-icon name="eye-off-outline"></ion-icon>
+                    </span>
                 </div>
                 <div class="group">
-                    <input type="password" class="inputText" placeholder=" " required>
-                    <label for="">PassWord</label>
-                </div>
-                <div class="group">
-                    <input type="checkbox">
-                    <label for="">Save Me</label>
+                    <input type="checkbox"> Save login
                 </div>
                 <button>Login</button>
             </div>
+
+
+            <div class="content">
+                <h1>Register</h1>
+                <div class="group">
+                    <input type="text" id="username-reg" class="inputText" placeholder=" " required>
+                    <label for="username-reg">Username</label>
+                </div>
+                <div class="group">
+                    <input type="email" id="email-reg" class="inputText" placeholder=" " required>
+                    <label for="email-reg">Email</label>
+                </div>
+                <div class="group forpass">
+                    <input type="password" id="pass-reg" placeholder=" " required class="inputText">
+                    <label for="pass-reg">Password</label>
+                    <span id="showPassword">
+                        <ion-icon name="eye-outline"></ion-icon>
+                        <ion-icon name="eye-off-outline"></ion-icon>
+                    </span>
+                    <div class="power-container">
+                        <div id="power-point"></div>
+                    </div>
+                    <div class="checkPass">
+                        <label for="">
+                            <div  class="checkmini">
+                                <input type="checkbox" class="check-item" id="checkbox1">
+                                <p> kèm kí hiệu số</p>
+                            </div>
+                            <div  class="checkmini">
+                                <input type="checkbox" class="check-item" id="checkbox2">
+                                <p> kèm chữ in thường</p>
+                            </div >
+                            <div  class="checkmini">
+                                <input type="checkbox" class="check-item" id="checkbox3">
+                                <p>kèm chữ in hoa</p>
+                            </div>
+                            <div  class="checkmini">
+                                <input type="checkbox" class="check-item" id="checkbox4">
+                                <p>kèm kí tự đặc biệt</p>
+                            </div>
+                            <div  class="checkmini">
+                                <input type="checkbox" class="check-item" id="checkbox5">
+                                <p>tối thiểu 6 kí tự</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <button>Login</button>
+            </div>
+
+
+            <div class="form-rotate">
+                <div id="rotate"></div>
+            </div>
+        </div>
+        <div class="option">
+            <div class="bg-active" id="bg-active"></div>
+            <div class="changeType active" id="login">Login</div>
+            <div class="changeType" id="register">Register</div>
         </div>
     </div>
-    <script src="ex.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+       <script src="ex.js"></script>
 </body>
 </html>
+  
