@@ -1,0 +1,62 @@
+
+body{
+    min-height: 100vh;
+    margin: 0;
+    background-image:  linear-gradient(
+        to bottom , #EF08A6, #ee6c8f
+    );
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+    font-family: monospace;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    margin: auto;
+    text-align: center;
+    height: 100vh;
+    justify-content: center;
+    font-size: x-large;
+}
+
+button{
+    margin-top: 1rem;
+    padding: 5px 20px;
+    border: 1px solid #b21065;
+    border-radius: 20px;
+    background-image: 
+    linear-gradient(
+        to bottom , #fff9,transparent 50% 90% , #f5cbbc99
+    ),
+    repeating-linear-gradient(60deg ,
+    #bc058225 0 10px , transparent 10px 20px),
+    linear-gradient(
+        to bottom , #EF08A6, #ee6c8f
+    );
+    color: white;
+    font-family: monospace;
+    font-weight: bold;
+    text-shadow: 0 1px 0 #efb7de;
+    box-shadow: 0 10px 0 #0005 ,
+    0 5px 0 #BD1360,
+    0 4px 0 7px #fff,
+    0 0 30px 10px #e260ae;
+    transition: 0.1s ;
+}
+.mouse{
+    cursor: not-allowed;
+}
+.mouseConnect{
+    cursor: pointer;
+}
+/* Định nghĩa các thuộc tính cho trạng thái :active */
+button.my-active-button:active {
+    box-shadow: 0 0px 0 #0005,
+        0 0px 0 #BD1360,
+        0 0px 0 7px #fff,
+        0 0 30px 30px #e260ae;
+    transform: translateY(5px);
+    cursor: pointer;
+}
