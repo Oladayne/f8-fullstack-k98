@@ -1,0 +1,13 @@
+.container {
+    width: 300px;
+    margin: 20px auto;
+  }
+  
+  .box {
+    width: 100px;
+    height: 100px;
+    background-color: lightblue;
+    border: 2px solid blue;
+    margin: 10px;
+    padding: 10px;
+  }

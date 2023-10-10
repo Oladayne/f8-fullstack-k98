@@ -1,0 +1,17 @@
+.box1 {
+    position: relative;
+    z-index: 2;
+    background-color: red;
+  }
+  
+  .box2 {
+    position: relative;
+    z-index: 1;
+    background-color: blue;
+    top: -10px;
+  }
+  .static-box {
+    position: static;
+    background-color: yellow;
+  }
+  

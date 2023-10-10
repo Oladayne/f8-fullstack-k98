@@ -1,4 +1,4 @@
-const countdownTime = 5;
+const countdownTime = 60;
 let remainingTime = countdownTime;
 let animationFrameId;
 let startTime;
@@ -50,3 +50,25 @@ function animateCountdown() {
 function stopCountdown() {
     cancelAnimationFrame(animationFrameId);
 }
+let counter = 0; // Biến để đếm số lần lặp
+let dotInterval; // Biến để lưu trữ ID của setInterval
+let dotSpan = document.getElementById("dotSpan");
+
+function addDot() {
+    if (counter < 3) {
+        dotSpan.textContent += ".";
+        counter++;
+    } else {
+        clearInterval(dotInterval); // Dừng vòng lặp khi đạt 5 dấu chấm
+        counter = 0; // Đặt lại biến đếm
+        dotSpan.textContent = ""; // Đặt lại nội dung của thẻ span
+        startInterval(); // Bắt đầu lại vòng lặp
+    }
+}
+
+function startInterval() {
+    dotInterval = setInterval(addDot, 1000/3); // Thiết lập vòng lặp để tự động thêm dấu chấm mỗi giây (1000ms)
+}
+
+// Khởi đầu vòng lặp
+startInterval();

@@ -60,3 +60,10 @@ button.my-active-button:active {
     transform: translateY(5px);
     cursor: pointer;
 }
+#myButton {
+    position: relative;
+}
+
+#dotSpan {
+    position: absolute;
+}
