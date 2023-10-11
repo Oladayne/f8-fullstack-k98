@@ -7,7 +7,7 @@ F8.component("counter-app", {
     },
     template: `
     <h1>{{title}}</h1>
-    <h2>Đã đếm:{{count}} lần</h2>
+    <h2>Count: <span class="count">{{count}}</span></h2>
     <button v-on:click="count--">-</button>
     <button v-on:click="count++">+</button>
     <button v-on:dblclick="title='Xin Chào F8'">Change Title</button>
