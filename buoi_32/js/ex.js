@@ -10,7 +10,7 @@ F8.component("counter-app", {
     <h2>Count: <span class="count">{{count}}</span></h2>
     <button v-on:click="count--">-</button>
     <button v-on:click="count++">+</button>
-    <button v-on:dblclick="title='Xin Chào F8'">Change Title</button>
+    <button v-on:click="title='Xin Chào F8'">Change Title</button>
     `,
 });
 F8.component("header-component", {

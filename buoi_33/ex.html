@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tìm kiếm bằng giọn nói</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="ex.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="box">
+        <div class="spinner-wrap">
+          <div class="spinner-item"></div>
+          <div class="spinner-item spinner-item--2"></div>
+          <div class="spinner-item spinner-item--3"></div>
+
+        </div>
+        <button id="button" class=".my-active-button"><i class="fa-solid fa-microphone" style="color: #ffffff;"></i></button>
+      </div>
+      <div class="content">
+        <p id="status1">Bấm vào đây để nói</p>
+        <p id="status2"></p>
+        <div id="result" style="display: none;"></div>
+      </div>
+      
+    </div>
+    <script src="ex.js"></script>
+  </body>
+</html>
