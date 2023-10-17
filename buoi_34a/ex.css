@@ -1,0 +1,41 @@
+body{
+    min-height: 100vh;
+    background-image: linear-gradient(
+        to top, #ffffff, #000000
+    );
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.zoom{
+    width: max-content;
+    position: relative;
+}
+.zoom img{
+    width: 500px;
+}
+#imgZoom{
+    position: absolute;
+    left: 0;
+    top: 0;
+    --zoom-x:50%;
+    --zoom-y:50%;
+    transform: scale(1.5);
+    opacity: 0.5;
+    pointer-events: none;
+    clip-path: circle(
+        50px at var(--zoom-x) var(--zoom-y)
+    );
+    opacity: 0;
+}
+.zoom-trigger{
+    position: absolute;
+    top: 80%;
+}
+.zoom-trigger button{
+    width: 300px;
+}
+.zoom-in{
+    cursor: zoom-in;
+}
