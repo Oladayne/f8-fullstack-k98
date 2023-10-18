@@ -1,111 +1,138 @@
-* {
+*{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    outline: none;
-  }
-  
-  li {
-    list-style: none;
-  }
-  
-  body {
-    background-color: blueviolet;
-    font-family: "Poppins", sans-serif;
-    font-weight: 300;
-  }
-  
-  .todo {
-    width: 450px;
-    background-color: beige;
-    border-radius: 10px;
-    margin: 50px auto;
-    color: white;
-  }
-  
-  .todo-content {
-    padding: 30px 20px;
-    background-color: #1A1A40;
-    border-radius: 10px;
-  }
-  .todo-content .title {
-    font-size: 30px;
-    margin-bottom: 20px;
-    text-align: center;
-    font-weight: 700;
-  }
-  .todo-content .list-task {
-    margin: 25px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  .todo-content .list-task .task-item {
-    display: flex;
-    height: 50px;
-    background-color: blueviolet;
-    border-radius: 5px;
-  }
-  .todo-content .list-task .task-item .item {
-    width: calc(100% - 80px);
-    height: 100%;
-  }
-  .todo-content .list-task .task-item .item .item-input {
-    height: 100%;
-    width: 100%;
-    background-color: transparent;
-    padding-left: 10px;
     border: none;
-    color: white;
-    font-size: 18px;
-    font-weight: 600;
+    outline: none;
+    list-style: none;
+    font-family: 'Montserrat', sans-serif;
   }
-  .todo-content .list-task .task-item .icon {
-    margin-left: auto;
-    width: 80px;
-    height: 100%;
+  h1{
+    text-align: center;
+    margin-bottom: 2rem;
+  
+    
+  }
+  h1 span{
+    background: -webkit-linear-gradient(left, #56a5e9, #0c9774);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .container{
+    margin: auto;
+    width: 60%;
+    margin-top: 210px;
+    
+  }
+  .search{
+    width: 80%;
+    display: flex;
+    height: 40px;
+    border: 2px solid blue;
+    border-radius: 10px;
+    padding: 2px;
+    
+  }
+  .search input{
+    width: 100%;
+    border: none;
+  }
+  .search button{
+    width: 40px;
+    border-radius: 10px;
+    border: none;
+    background-color: blue;
+    color: white;
+  }
+  .todos-control{
+    display: flex;
+    
+  }
+  #addBtn{
+    margin-left: 10px;
+    padding:0 10px ;
+    border-radius: 10px;
+    background-color: rgb(3, 96, 20);
+    color: aliceblue;
+  
+  }
+  .add{
+    display: none;
+    background-color: #fff;
+      width: 50%;
+    left: 50%;
+    height: 100px;
+      transform: translateX(-50%);
+      border: 3px solid #2ecc71;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      z-index: 99;
+    position: absolute;
+    top: 310px;
+    
+      
+  }
+  .add input{
+    width: 100%;
+    height: 40px;
+    border: 1px solid #0c9774;
+    border-radius: 10px;
+    padding-left: 10px;
+  }
+  .send-data{
+    margin-top: 2rem;
+  
+  }
+  .send-data button{
+    width: max-content;
+    height: 35px;
     padding: 0 10px;
+    background-color: #0c9774;
+    color: white;
+    border-radius: 10px;
+  } 
+  #overlay{
+      background-color: #000;
+      height: 100%;
+      width: 100%;
+      position: fixed;
+    left: 0;
+      top: 0px;
+      opacity: 0.7;
+    z-index: 0;
+    display: none;
+    
+  }
+   li {
+    height: 50px;
+    border: 1px solid #707070;
     display: flex;
     align-items: center;
-    gap: 10px;
-    justify-content: space-evenly;
+    margin-top: 10px;
+    border-radius: 10px;
   }
-  .todo-content .list-task .task-item .icon .edit, .todo-content .list-task .task-item .icon .delete {
-    color: white;
-    width: 20px;
-    height: 20px;
-    font-size: 18px;
+   li span{
+    width: 80%;
+    display: inline-block;
+    padding-left: 1rem;
   }
-  
-  .task, .task-item-edit {
-    display: flex;
-    background-color: blueviolet;
+  li button{
+    width: max-content;
     height: 35px;
-  }
-  .task .task-input, .task-item-edit .task-input {
-    width: calc(100% - 80px);
-  }
-  .task .task-input .input-todo, .task .task-input .input-edit, .task-item-edit .task-input .input-todo, .task-item-edit .task-input .input-edit {
-    width: 100%;
-    height: 100%;
-    margin: auto 0;
-    border: 1px solid blueviolet;
-    padding-left: 10px;
-    background-color: #1A1A40;
+    padding: 0 10px;
+    background-color: #0c9774;
     color: white;
-  }
-  .task .btn-addTask, .task-item-edit .btn-addTask {
-    margin-left: auto;
-    width: 80px;
-    border: none;
-    background-color: transparent;
-    font-weight: 600;
+    border-radius: 10px;
+  } 
+  #incompleteDataDisplay #btnCom{
+    padding: 10px 20px;
+    background-color: #707070;
     color: white;
+    display: inline-block;
+    border-radius: 10px;
+    
   }
-  .task .btn-addTask:hover, .task-item-edit .btn-addTask:hover {
-    cursor: pointer;
-  }
-  
-  .task-item-edit {
-    display: none;
+   li button{
+    margin-left:.5rem ;
   }
