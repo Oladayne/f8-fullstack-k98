@@ -1,26 +1,16 @@
 var dataList = [];
 var searchResults = [];
 
-// Thêm sự kiện lấy dữ liệu từ API sau khi trang tải xong
+
 function sanitizeInput(input) {
-    // Sử dụng một biến tạm thời để tạo một phần tử div
     var temp = document.createElement('div');
     temp.textContent = input;
-    // Lấy giá trị text đã được làm sạch
     return temp.innerHTML;
 }
 
 // Sử dụng hàm sanitizeInput để xử lý dữ liệu người dùng
 var userInput = document.getElementById('nameInput').value;
 var cleanInput = sanitizeInput(userInput);
-var completeButton = document.createElement("button");
-completeButton.textContent = "Completed";
-completeButton.addEventListener("click", function() {
-    toggleCompleted(data);
-});
-document.addEventListener("DOMContentLoaded", function() {
-    loadDataFromAPI(); // Gọi hàm lấy dữ liệu mặc định
-});
 document.getElementById("searchInput").addEventListener("input", function() {
     if (document.getElementById("searchInput").value === "") {
         hideSearchResults();
@@ -31,11 +21,11 @@ document.getElementById("searchInput").addEventListener("input", function() {
 
 function hideSearchResults() {
     var searchDisplay = document.getElementById("searchList");
-    searchDisplay.innerHTML = ""; // Xóa tất cả phần tử trong danh sách tìm kiếm
+    searchDisplay.innerHTML = ""; 
 }
 
 function loadDataFromAPI() {
-    var apiUrl = "https://gnmyzm-8080.csb.app/users"; // Thay thế bằng URL của API thật
+    var apiUrl = "https://gnmyzm-8080.csb.app/users"; 
     fetch(apiUrl)
         .then((response) => response.json())
         .then((data) => {
@@ -96,23 +86,31 @@ function search() {
 function updateDataList() {
     var completedDataDisplay = document.getElementById("completedList");
     var incompleteDataDisplay = document.getElementById("incompleteList");
+    var countDisplay = document.getElementById("count");
     completedDataDisplay.innerHTML = "";
     incompleteDataDisplay.innerHTML = "";
 
-    dataList.forEach(function(data) {
+    incompleteDataCount = 0; 
+
+    dataList.forEach(function (data) {
         var listItem = createListItem(data);
 
         if (data.completed) {
             completedDataDisplay.appendChild(listItem);
         } else {
+            incompleteDataCount++;
             incompleteDataDisplay.appendChild(listItem);
         }
     });
+
+    countDisplay.textContent = incompleteDataCount;
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    loadDataFromAPI(); // Gọi hàm lấy dữ liệu mặc định
+document.addEventListener("DOMContentLoaded", function () {
+    loadDataFromAPI();
+    updateDataList();
 });
+
 
 function updateSearchResults() {
     var completedDataDisplay = document.getElementById("completedList");
@@ -131,9 +129,6 @@ function updateSearchResults() {
         }
     });
 }
-document.addEventListener("DOMContentLoaded", function() {
-    loadDataFromAPI(); // Gọi hàm lấy dữ liệu mặc định
-});
 
 function createListItem(data) {
     var listItem = document.createElement("li");
@@ -142,23 +137,28 @@ function createListItem(data) {
     nameText.textContent =  data.name;
 
     var editButton = document.createElement("button");
-    editButton.textContent = "Sửa";
+    editButton.innerHTML = '<i class="fa-solid fa-pencil"></i>';
+    editButton.style.background='blue'
     editButton.addEventListener("click", function() {
         editData(data);
     });
 
     var deleteButton = document.createElement("button");
-    deleteButton.textContent = "Xóa";
+    deleteButton.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
+    deleteButton.style.background='red'
     deleteButton.addEventListener("click", function() {
         deleteData(data.id);
     });
 
     var completeButton = document.createElement("button");
-    completeButton.textContent = "Completed";
-    completeButton.addEventListener("click", function() {
+    completeButton.innerHTML = '<i class="fa-solid fa-check"></i>';
+    completeButton.classList.add("completed-button");
+    completeButton.addEventListener("click", function () {
         toggleCompleted(data);
     });
-
+    if (!data.completed) {
+        completeButton.classList.add("completed-icon"); 
+    }
     listItem.appendChild(nameText);
     listItem.appendChild(editButton);
     listItem.appendChild(deleteButton);
@@ -168,7 +168,6 @@ function createListItem(data) {
 }
 
 function deleteData(itemId) {
-    // Sử dụng biến tạm thời searchResults nếu có kết quả tìm kiếm, nếu không sử dụng dataList
     var dataToDelete = searchResults.length > 0 ? searchResults : dataList;
 
     var apiUrl = "https://gnmyzm-8080.csb.app/users/" + itemId;
@@ -194,20 +193,20 @@ function editData(data) {
         var apiUrl = "https://gnmyzm-8080.csb.app/users/" + itemId;
         var updatedData = {
             name: newName,
-            completed: data.completed // Giữ nguyên trạng thái completed
+            completed: data.completed 
         };
 
         fetch(apiUrl, {
-                method: "PUT", // hoặc PATCH tùy thuộc vào API của bạn
+                method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(updatedData),
             })
             .then(() => {
-                // Cập nhật danh sách dữ liệu sau khi cập nhật thành công
+               
                 data.name = newName;
-                updateDataList(); // Cập nhật giao diện ngay lập tức
+                updateDataList(); 
             })
             .catch((error) => {
                 console.error("Lỗi trong quá trình cập nhật dữ liệu:", error);
@@ -220,7 +219,7 @@ function toggleCompleted(data) {
     var apiUrl = "https://gnmyzm-8080.csb.app/users/" + itemId;
     var updatedData = {
         name: data.name,
-        completed: !data.completed // Đảo ngược trạng thái completed
+        completed: !data.completed 
     };
 
     fetch(apiUrl, {
@@ -231,9 +230,9 @@ function toggleCompleted(data) {
             body: JSON.stringify(updatedData),
         })
         .then(() => {
-            // Cập nhật trạng thái completed trong dữ liệu
+           
             data.completed = !data.completed;
-            updateDataList(); // Cập nhật giao diện ngay lập tức
+            updateDataList(); 
         })
         .catch((error) => {
             console.error("Lỗi trong quá trình cập nhật trạng thái Completed:", error);
@@ -246,14 +245,12 @@ const nameInput = document.getElementById("nameInput");
 const submitButton = document.getElementById("submitBtn");
 const cancelButton = document.getElementById("cancelBtn");
 
-// Ẩn form thêm khi trang web tải lên
-
 
 // Xử lý sự kiện khi nhấn nút "Add todos"
 addButton.addEventListener("click", function() {
     overlay.style.display = "block";
     addForm.style.display = "block";
-    nameInput.value = ""; // Xóa dữ liệu trong trường input
+    nameInput.value = ""; 
 });
 
 // Xử lý sự kiện khi nhấn nút "Hủy"
@@ -264,8 +261,6 @@ cancelButton.addEventListener("click", function() {
 
 // Xử lý sự kiện khi nhấn nút "Gửi Dữ Liệu"
 submitButton.addEventListener("click", function() {
-    // Thực hiện các xử lý khi gửi dữ liệu và sau đó ẩn form
-    // Ví dụ: gửi dữ liệu lên máy chủ và sau đó ẩn form
     overlay.style.display = "none";
     addForm.style.display = "none";
 });
