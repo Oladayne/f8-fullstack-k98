@@ -1,86 +1,172 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>Hiển thị dữ liệu từ API khi cuộn</title>
-  <link rel="stylesheet" href="ex.css">
-  <style>
-    html, body {
-    height: 100%;
-}
-  </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ex.css">
+    <title>Socialbook - html css template</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
+
 <body>
-  <div id="data-container">
-    <!-- Dữ liệu sẽ được hiển thị ở đây -->
-  </div>
+    <nav class="navbar">
+        <div class="nav-left">
+            <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1200px-Facebook_Logo_%282019%29.png" alt="">
+            <div class="search-box">
+                <img src="images/search.png" alt="">
+                <input type="text" placeholder="Search">
+            </div>
+        </div>
+        <div class="nav-right">
+            
+            <div class="profile-image online">
+                <img src="https://scontent.fhan5-6.fna.fbcdn.net/v/t39.30808-1/357711147_1445054526253643_537251041321107664_n.jpg?stp=dst-jpg_p320x320&_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_ohc=wZyYpb6DhskAX-hUUSo&_nc_ht=scontent.fhan5-6.fna&_nc_e2o=s&oh=00_AfAykq2DGj5uxHtxm2gHuP3P6psNFZWdsaWrQqnN0d39AA&oe=6538160C" alt="">
+            </div>
 
-  <script>
-    let currentPage = 1; // Số trang dữ liệu hiện tại
-    let isLoading = false;
-    let currentObjectIndex = 0; // Vị trí của object hiện tại
-    let data = []; // Mảng chứa tất cả các objects
+        </div>
+       
+    </nav>
 
-    function fetchData() {
-      if (isLoading) {
-        return;
-      }
+    <!-- content-area------------ -->
 
-      isLoading = true;
+    <div class="container">
+        <div class="left-sidebar">
+            <div class="important-links">
+                <a href="#"><img src="images/news.png" alt="">Latest News</a>
+                <a href="#"><img src="images/friends.png" alt="">Friends</a>
+                <a href="#"><img src="images/group.png" alt="">Groups</a>
+                <a href="#"><img src="images/marketplace.png" alt="">marketplace</a>
+                <a href="#"><img src="images/watch.png" alt="">Watch</a>
+                <a href="#">See More</a>
+            </div>
 
-      fetch(`http://localhost:3000/posts?page=${currentPage}`)
-        .then(response => response.json())
-        .then(responseData => {
-          const dataContainer = document.getElementById('data-container');
-            console.log(responseData);
-          if (responseData) {
-            const currentObject = responseData[currentObjectIndex];
-            if (currentObject) {
-              // Hiển thị object hiện tại
-              const itemElement = document.createElement('div');
-              itemElement.innerHTML = `
-                <h2>${currentObject.title}</h2>
-                <p>ID: ${currentObject.id}</p>
-                <ul>
-                  <li>Email: ${currentObject.content}</li>
-                  <!-- Các trường dữ liệu khác -->
-                </ul>
-              `;
-              dataContainer.appendChild(itemElement);
+            <div class="shortcut-links">
+                <p>Your Shortcuts</p>
+                <a href="#"> <img src="https://i.pinimg.com/474x/77/b7/6d/77b76d39916aa8cbbd6b49fa234b2734.jpg" alt="">Web Developers</a>
+                <a href="#"> <img src="https://i.pinimg.com/474x/77/b7/6d/77b76d39916aa8cbbd6b49fa234b2734.jpg" alt="">Web Developers</a>
+                <a href="#"> <img src="https://i.pinimg.com/474x/77/b7/6d/77b76d39916aa8cbbd6b49fa234b2734.jpg" alt="">Web Developers</a>
+                <a href="#"> <img src="https://i.pinimg.com/474x/77/b7/6d/77b76d39916aa8cbbd6b49fa234b2734.jpg" alt="">Web Developers</a>
+            </div>
+        </div>
 
-              // Tăng vị trí của object hiện tại
-              currentObjectIndex++;
+        <!-- main-content------- -->
 
-              // Nếu đã hiển thị hết tất cả các objects, tải thêm trang mới
-              if (currentObjectIndex >= responseData.length) {
-                currentPage++;
-                currentObjectIndex = 0;
-              }
-            } else {
-              // Hết dữ liệu, ngừng tải
-              currentPage = -1;
-            }
-          }
+        <div class="content-area">
+            <div class="story-gallery">
+                <div class="story story1">
+                    <img src="images/upload.png" alt="">
+                    <p>Post Story</p>
+                </div>
+                <div class="story story2">
+                    <img src="https://i.pinimg.com/236x/91/a2/32/91a23245d767cbb8eae982494a3dcf35.jpg" alt="">
+                    <p>An Thủy</p>
+                </div>
+                <div class="story story3">
+                    <img src="https://i.pinimg.com/236x/44/73/2f/44732f3e0db05de6d409ded8def6c5df.jpg" alt="">
+                    <p>Con Vợ</p>
+                </div>
+                <div class="story story4">
+                    <img src="https://i.pinimg.com/236x/2c/e3/64/2ce3645f825d71e635c79b5b00a91631.jpg" alt="">
+                    <p>Hùng</p>
+                </div>
+                <div class="story story5">
+                    <img src="https://i.pinimg.com/564x/62/f8/9d/62f89d2841a5b387f732b045dba233c2.jpg" alt="">
+                    <p>Nỏ</p>
+                </div>
+            </div>
 
-          isLoading = false;
-        })
-        .catch(error => {
-          console.error('Lỗi khi lấy dữ liệu từ API: ' + error);
-          isLoading = false;
-        });
-    }
+            <div class="write-post-container">
+                <div class="user-profile">
+                    <img src="https://scontent.fhan5-6.fna.fbcdn.net/v/t39.30808-1/357711147_1445054526253643_537251041321107664_n.jpg?stp=dst-jpg_p320x320&_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_ohc=wZyYpb6DhskAX-hUUSo&_nc_ht=scontent.fhan5-6.fna&_nc_e2o=s&oh=00_AfAykq2DGj5uxHtxm2gHuP3P6psNFZWdsaWrQqnN0d39AA&oe=6538160C" alt="">
+                    <div>
+                        <p> Hùng Nguyễn</p>
+                        <small><i class="fa-solid fa-earth-americas" style="color: #e6e6e6;"></i> <i class="fas fa-caret-down"></i></small>
+                    </div>
+                </div>
 
-    // Bắt sự kiện cuộn trang
-    window.addEventListener('scroll', () => {
-  if (
-    window.innerHeight + window.scrollY >= document.body.scrollHeight - 100 &&
-    !isLoading
-  ) {
-    fetchData(); // Khi cuộn đến cuối trang và không đang tải, gọi hàm lấy dữ liệu
-  }
-});
+                <div class="post-upload-textarea">
+                    <textarea name="" placeholder="What's on your mind, Alex?" id="" cols="30" rows="3"></textarea>
+                    <div class="add-post-links">
+                        <a href="#"><img src="images/live-video.png" alt="">Live Video</a>
+                        <a href="#"><img src="" alt="">Photo/Video</a>
+                        <a href="#"><img src="images/feeling.png" alt="">Feeling Activity</a>
+                    </div>
+                </div>
+            </div>
+            <div class="statuss">
+               
+            </div>
+            
+           
+        </div>
 
-    // Gọi fetchData lần đầu tiên để hiển thị dữ liệu ban đầu
-    fetchData();
-  </script>
+        <!-- sidebar------------ -->
+        <div class="right-sidebar">
+            <div class="heading-link">
+                <h4>Events</h4>
+                <a href="">See All</a>
+            </div>
+
+            <div class="events">
+                <div class="left-event">
+                    <h4>13</h4>
+                    <span>august</span>
+                </div>
+                <div class="right-event">
+                    <h4>Social Media</h4>
+                    <p> <i class="fas fa-map-marker-alt"></i> Ha Noi</p>
+                    <a href="#">More Info</a>
+                </div>
+            </div>
+            <div class="events">
+                <div class="left-event">
+                    <h4>18</h4>
+                    <span>January</span>
+                </div>
+                <div class="right-event">
+                    <h4>Social Media</h4>
+                    <p><i class="fas fa-map-marker-alt"></i>Ha Noi</p>
+                    <a href="#">More Info</a>
+                </div>
+            </div>
+
+            <div class="heading-link">
+                <h4>Advertisement</h4>
+                <a href="">Close</a>
+            </div>
+            <div class="advertisement">
+                <img src="https://i.pinimg.com/564x/51/21/b2/5121b2a9b9f2e262fa9cc48416a17411.jpg" class="advertisement-image" alt="">
+            </div>
+
+            <div class="heading-link">
+                <h4>Conversation</h4>
+                <a href="">Hide Chat</a>
+            </div>
+
+            <div class="online-list">
+                <div class="online">
+                    <img src="https://i.pinimg.com/564x/62/f8/9d/62f89d2841a5b387f732b045dba233c2.jpg" alt="">
+                </div>
+                <p>An Thủy</p>
+            </div>
+
+            <div class="online-list">
+                <div class="online">
+                    <img src="https://i.pinimg.com/236x/a1/0c/a0/a10ca0eee257987d2d717ded17bdb032.jpg" alt="">
+                </div>
+                <p>Vợ</p>
+            </div>
+            <div class="online-list">
+                <div class="online">
+                    <img src="https://i.pinimg.com/236x/4c/85/89/4c8589360000748c61cf018cd012a1d6.jpg" alt="">
+                </div>
+                <p>Bồ</p>
+            </div>
+        </div>
+    </div>
+  
+    <script src="ex.js"></script>
 </body>
 </html>
