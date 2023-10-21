@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hiển thị dữ liệu từ API khi cuộn</title>
+  <link rel="stylesheet" href="ex.css">
+  <style>
+    html, body {
+    height: 100%;
+}
+  </style>
+</head>
+<body>
+  <div id="data-container">
+    <!-- Dữ liệu sẽ được hiển thị ở đây -->
+  </div>
+
+  <script>
+    let currentPage = 1; // Số trang dữ liệu hiện tại
+    let isLoading = false;
+    let currentObjectIndex = 0; // Vị trí của object hiện tại
+    let data = []; // Mảng chứa tất cả các objects
+
+    function fetchData() {
+      if (isLoading) {
+        return;
+      }
+
+      isLoading = true;
+
+      fetch(`http://localhost:3000/posts?page=${currentPage}`)
+        .then(response => response.json())
+        .then(responseData => {
+          const dataContainer = document.getElementById('data-container');
+            console.log(responseData);
+          if (responseData) {
+            const currentObject = responseData[currentObjectIndex];
+            if (currentObject) {
+              // Hiển thị object hiện tại
+              const itemElement = document.createElement('div');
+              itemElement.innerHTML = `
+                <h2>${currentObject.title}</h2>
+                <p>ID: ${currentObject.id}</p>
+                <ul>
+                  <li>Email: ${currentObject.content}</li>
+                  <!-- Các trường dữ liệu khác -->
+                </ul>
+              `;
+              dataContainer.appendChild(itemElement);
+
+              // Tăng vị trí của object hiện tại
+              currentObjectIndex++;
+
+              // Nếu đã hiển thị hết tất cả các objects, tải thêm trang mới
+              if (currentObjectIndex >= responseData.length) {
+                currentPage++;
+                currentObjectIndex = 0;
+              }
+            } else {
+              // Hết dữ liệu, ngừng tải
+              currentPage = -1;
+            }
+          }
+
+          isLoading = false;
+        })
+        .catch(error => {
+          console.error('Lỗi khi lấy dữ liệu từ API: ' + error);
+          isLoading = false;
+        });
+    }
+
+    // Bắt sự kiện cuộn trang
+    window.addEventListener('scroll', () => {
+  if (
+    window.innerHeight + window.scrollY >= document.body.scrollHeight - 100 &&
+    !isLoading
+  ) {
+    fetchData(); // Khi cuộn đến cuối trang và không đang tải, gọi hàm lấy dữ liệu
+  }
+});
+
+    // Gọi fetchData lần đầu tiên để hiển thị dữ liệu ban đầu
+    fetchData();
+  </script>
+</body>
+</html>

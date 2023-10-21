@@ -1,0 +1,27 @@
+body {
+    font-family: monospace;
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    height: 100%;
+}
+
+#scroll-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+#content {
+    margin: 10px;
+}
+
+#loading {
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+}
+#data-container{
+    max-height: 110vh;
+}
