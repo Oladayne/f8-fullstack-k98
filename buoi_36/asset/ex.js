@@ -3,24 +3,24 @@ import { config } from "./config.js";
 const { PAGE_LIMIT } = config;
 
 const app = {
-  rootEl: document.querySelector(".posts"),
+  rootEl: document.querySelector(".questions-container"),
   query: {
     _sort: "id",
     _order: "desc",
     _limit: PAGE_LIMIT,
     _page: 1,
   },
-  modalEl:document.querySelector('#post-detail'),
-  render: function (posts) {
+
+  render: function (ques) {
     const stripHtml = (html) => html.replace(/(<([^>]+)>)/gi, "");
     this.rootEl.innerHTML = `<div class="row g-3">
-    ${posts
+    ${ques
       .map(
-        ({ title, excerpt ,id}) => `<div class="col-6 col-md-4">
+        ({ question ,id}) => `<div class="col-6 col-md-4">
     <div class="post-item border p-3">
-      <h3><a href="#" data-bs-toggle="modal" data-bs-target="#post-detail" data-id="${id}">${stripHtml(title)}</a></h3>
+      <h3><a href="#" data-bs-toggle="modal" data-bs-target="#post-detail" data-id="${id}">${stripHtml(question)}</a></h3>
       <p>
-        ${stripHtml(excerpt)}
+ 
       </p>
     </div>
   </div>`,
@@ -42,8 +42,9 @@ const app = {
 
     queryString = queryString ? "?" + queryString : "";
 
-    const { data: posts,response } = await client.get(`/posts${queryString}`);
-    this.render(posts);
+    const { data: ques,response } = await client.get(`/questions${queryString}`);
+    this.render(ques);
+    console.log(ques);
     // tính tổng só trang
     // bằng tổng số bài viết / limit (totalPage = math.ceil)
     window.scroll({
@@ -93,48 +94,10 @@ const app = {
       this.getPosts(this.query);
     })
   },
-  handleShowDetail: function () {
-    let postId = null;
-    this.rootEl.addEventListener("click", (e) => {
-      if (e.target.dataset.bsTarget === '#post-detail') {
-        postId = e.target.dataset.id;
-        console.log(e.target.dataset.id);
-      }
-    })
-    this.modalEl.addEventListener("shown.bs.modal", () => {
-      console.log(postId);
-      if (postId) {
-      this.getPost(postId)
-    }
-    });
-  },
-  handleCloseModal: function () {
-    this.modalEl.addEventListener("hidden.bs.modal", () => {
-    const titleEl = this.modalEl.querySelector('.modal-title');
-    const bodyEl = this.modalEl.querySelector('.modal-body');
-    titleEl.innerHTML = '';
-    bodyEl.innerHTML = '';
-    })
-  },
-  getPost: async function (id) {
-    const { data: post ,response } = await client.get(`/posts/${id}`);
-    const titleEl = this.modalEl.querySelector('.modal-title');
-    const bodyEl = this.modalEl.querySelector('.modal-body');
-    if (response.ok) {
-      const { title, content } = post;
-      titleEl.innerHTML = title;
-      bodyEl.innerHTML = content;
-    } else {
-      titleEl.innerHTML = `404 NOT FOUND`;
-      bodyEl.innerHTML = `không tìm thấy bài`;
-    }
-  },
   //Khởi động app
   start: function () {
     this.getPosts(this.query);
     this.handleGoPage();
-    this.handleShowDetail();
-    this.handleCloseModal();
   },
 };
 document.addEventListener("DOMContentLoaded", function() {
