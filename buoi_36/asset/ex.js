@@ -14,10 +14,10 @@ const app = {
   autoPageChangeTimer: null,
   render: function (ques) {
     const stripHtml = (html) => html.replace(/(<([^>]+)>)/gi, "");
-    this.rootEl.innerHTML = ques.map(({ question, id, answers, note }) => {
-      const answerHTML = answers.map((answer) => `
+    this.rootEl.innerHTML = ques.map(({ question, id, answers, note }, index) => {
+      const answerHTML = answers.map((answer, answerIndex) => `
         <div class="answer-item">
-          <input type="radio" name="answer-${id}" value="${answer.text}">
+          <input type="radio" name="answer-${id}" value="${answerIndex}">
           <label>${answer.text}</label>
         </div>
       `).join("");
@@ -29,12 +29,38 @@ const app = {
           <div class="answers">
             ${answerHTML}
           </div>
-          <button class="submit-button" data-question-id="${id}">Gửi kết quả</button>
+          <button type="button" id="submit-button-${index}">Gửi câu trả lời</button>
+          <p id="result-${index}"></p>
         </div>
       `;
     }).join("");
+  
+    // Lắng nghe sự kiện khi nút "Gửi câu trả lời" được nhấn
+    ques.forEach((question, index) => {
+      const submitButton = document.getElementById(`submit-button-${index}`);
+      const resultElement = document.getElementById(`result-${index}`);
+  
+      submitButton.addEventListener('click', function() {
+        const selectedAnswerIndex = document.querySelector(`input[name="answer-${question.id}"]:checked`);
+  
+        if (selectedAnswerIndex) {
+          const selectedAnswerIndexValue = parseInt(selectedAnswerIndex.value);
+          const selectedAnswerData = question.answers[selectedAnswerIndexValue];
+  
+          // Kiểm tra xem đáp án đã chọn có đúng không dựa trên "is_correct"
+          if (selectedAnswerData.is_correct) {
+            resultElement.textContent = 'Kết quả của bạn là đúng.';
+          } else {
+            resultElement.textContent = 'Kết quả của bạn là sai.';
+          }
+        } else {
+          resultElement.textContent = 'Hãy chọn một câu trả lời trước khi gửi.';
+        }
+      });
+    });
   },
   
+
 
   // Call API
   getPosts: async function (query = {}) {
@@ -98,50 +124,7 @@ const app = {
 
     this.autoPageChangeTimer = setInterval(updateCountdown, 1000);
   },
-  handleSubmitButtonClick: function () {
-    const submitButtons = document.querySelectorAll('.submit-button');
-    const resultMessage = document.getElementById('result-message');
-  
-    submitButtons.forEach((button) => {
-      button.addEventListener('click', async (e) => {
-        const questionId = e.target.getAttribute('data-question-id');
-        const selectedAnswer = document.querySelector(`input[name="answer-${questionId}"]:checked`);
-  
-        if (selectedAnswer) {
-          const answerText = selectedAnswer.value;
-          
-          // Gửi kết quả lên API
-          const response = await fetch('/api/submit', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              questionId,
-              answer: answerText,
-            }),
-          });
-  
-          if (response.ok) {
-            // Lấy kết quả từ API
-            const result = await response.json();
-            
-            // Hiển thị thông báo dựa trên kết quả
-            if (result.is_correct) {
-              resultMessage.textContent = 'Kết quả chính xác';
-            } else {
-              resultMessage.textContent = 'Kết quả không chính xác';
-            }
-          } else {
-            console.error('Lỗi trong quá trình gửi kết quả');
-          }
-        } else {
-          console.error('Vui lòng chọn một câu trả lời trước khi gửi');
-        }
-      });
-    });
-  },
-  
+
   handleGoPage: function () {
     const pagination = document.querySelector('.pagination-root');
     pagination.addEventListener("click", (e) => {
@@ -166,27 +149,6 @@ const app = {
   },
 };
 
-// Biến để kiểm tra xem countdown đã hoàn thành hay chưa
-let countdownFinished = false;
-
-// Hàm để thiết lập sự kiện khi click vào nút "Start"
-function setupCountdownAndStartAutoPageChange() {
-  const countdownButton = document.getElementById("countdownButton");
-  const startDiv = document.getElementById("backgroundImage");
-
-  countdownButton.addEventListener("click", () => {
-    countdownButton.disabled = true; // Ngăn không cho người dùng click lại trong quá trình đếm
-
-    setTimeout(() => {
-      startDiv.style.display = "none"; // Ẩn startDiv sau khi đếm xong
-      countdownFinished = true; // Đã đếm xong 3 giây
-      app.startAutoPageChange(); // Khởi động autoPageChange sau khi đếm xong
-    }, 3000); // Đợi 3 giây trước khi ẩn
-  });
-}
-
-// Gọi hàm để thiết lập sự kiện khi click vào nút "Start"
-setupCountdownAndStartAutoPageChange();
 
 //Chạy app
 app.start();
