@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trả lời câu hỏi từ API</title>
+</head>
+<body>
+    <div id="questions-container"></div>
+    <div id="result-container"></div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const questionsContainer = document.getElementById('questions-container');
+            const resultContainer = document.getElementById('result-container');
+
+            // Function to load questions and answers from the API
+            function loadQuestionsFromAPI() {
+                // Replace 'your_api_endpoint' with the actual API endpoint
+                fetch('https://gnmyzm-8080.csb.app/questions')
+                    .then(response => response.json())
+                    .then(questions => {
+                        questions.forEach((question, index) => {
+                            createQuestionForm(question, index);
+                        });
+                    })
+                    .catch(error => console.error(error));
+            }
+
+            // Function to create a form for a question
+            function createQuestionForm(question, index) {
+                const questionForm = document.createElement('form');
+                questionForm.innerHTML = `<h2>Câu hỏi ${index + 1}:</h2>
+                <p>${question.question}</p>
+                <ul>
+                    ${question.answers.map((answer, answerIndex) => `
+                        <li>
+                            <label>
+                                <input type="radio" name="answer${index}" value="${answerIndex}">
+                                ${answer.text}
+                            </label>
+                        </li>
+                    `).join('')}
+                </ul>
+                <button type="button" id="submit-button-${index}">Gửi câu trả lời</button>
+                <p id="result-${index}"></p>`;
+
+                questionsContainer.appendChild(questionForm);
+
+                const submitButton = document.getElementById(`submit-button-${index}`);
+                const resultElement = document.getElementById(`result-${index}`);
+
+                submitButton.addEventListener('click', function() {
+                    const selectedAnswerIndex = document.querySelector(`input[name="answer${index}"]:checked`);
+
+                    if (selectedAnswerIndex) {
+                        const selectedAnswer = selectedAnswerIndex.value;
+                        const selectedAnswerData = question.answers[selectedAnswer];
+
+                        // Here you can check if the selected answer is correct
+                        // based on the "is_correct" property of the selected answer
+                        if (selectedAnswerData.is_correct) {
+                            resultElement.textContent = 'Kết quả của bạn là đúng.';
+                        } else {
+                            resultElement.textContent = 'Kết quả của bạn là sai.';
+                        }
+                    } else {
+                        resultElement.textContent = 'Hãy chọn một câu trả lời trước khi gửi.';
+                    }
+                });
+            }
+
+            loadQuestionsFromAPI();
+        });
+    </script>
+</body>
+</html>
