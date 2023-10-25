@@ -1,6 +1,7 @@
 import { client } from "./client.js";
 import { config } from "./config.js";
 const { PAGE_LIMIT } = config;
+let poin = 0;
 
 const app = {
   rootEl: document.querySelector(".questions-container"),
@@ -10,8 +11,6 @@ const app = {
     _limit: PAGE_LIMIT,
     _page: 1,
   },
-  autoPageChangeInterval: 10000,
-  autoPageChangeTimer: null,
   render: function (ques) {
     const stripHtml = (html) => html.replace(/(<([^>]+)>)/gi, "");
     this.rootEl.innerHTML = ques.map(({ question, id, answers, note }, index) => {
@@ -36,31 +35,42 @@ const app = {
     }).join("");
   
     // Lắng nghe sự kiện khi nút "Gửi câu trả lời" được nhấn
-    ques.forEach((question, index) => {
-      const submitButton = document.getElementById(`submit-button-${index}`);
-      const resultElement = document.getElementById(`result-${index}`);
+   // Khởi tạo điểm (poin) ban đầu với giá trị là 0 ở mức globa
+
+ques.forEach((question, index) => {
+  const submitButton = document.getElementById(`submit-button-${index}`);
+  const resultElement = document.getElementById(`result-${index}`);
+  startCountdown();
+  submitButton.addEventListener('click', async function() {
+    const selectedAnswerIndex = document.querySelector(`input[name="answer-${question.id}"]:checked`);
   
-      submitButton.addEventListener('click', function() {
-        const selectedAnswerIndex = document.querySelector(`input[name="answer-${question.id}"]:checked`);
+    if (selectedAnswerIndex) {
+      const selectedAnswerIndexValue = parseInt(selectedAnswerIndex.value);
+      const selectedAnswerData = question.answers[selectedAnswerIndexValue];
   
-        if (selectedAnswerIndex) {
-          const selectedAnswerIndexValue = parseInt(selectedAnswerIndex.value);
-          const selectedAnswerData = question.answers[selectedAnswerIndexValue];
+      if (selectedAnswerData.is_correct) {
+        // Cộng thêm 100 điểm khi đáp án đúng
+        poin += 100;
+        resultElement.textContent = 'Kết quả của bạn là đúng.';
+      } else {
+        resultElement.textContent = 'Kết quả của bạn là sai.';
+      }
   
-          // Kiểm tra xem đáp án đã chọn có đúng không dựa trên "is_correct"
-          if (selectedAnswerData.is_correct) {
-            resultElement.textContent = 'Kết quả của bạn là đúng.';
-          } else {
-            resultElement.textContent = 'Kết quả của bạn là sai.';
-          }
-        } else {
-          resultElement.textContent = 'Hãy chọn một câu trả lời trước khi gửi.';
-        }
-      });
-    });
+      // Cập nhật giá trị điểm trên màn hình
+      const totalPointsSpan = document.getElementById('total-points');
+      if (totalPointsSpan) {
+        totalPointsSpan.textContent = poin;
+      }
+    } else {
+      resultElement.textContent = 'Hãy chọn một câu trả lời trước khi gửi.';
+    }
+  });
+});
+
+// ...
+
   },
   
-
 
   // Call API
   getPosts: async function (query = {}) {
@@ -105,26 +115,8 @@ const app = {
   </nav>
     `
   },
-  startAutoPageChange: function () {
-    const countdownSpan = document.getElementById("countdown");
-    let countdownValue = this.autoPageChangeInterval / 1000;
-
-    const updateCountdown = () => {
-      if (countdownValue > 0) {
-        countdownSpan.textContent = countdownValue;
-        countdownValue--;
-      } else {
-        countdownValue = this.autoPageChangeInterval / 1000;
-        this.query._page++;
-        this.getPosts(this.query);
-      }
-    };
-
-    updateCountdown(); // Gọi một lần ngay từ đầu
-
-    this.autoPageChangeTimer = setInterval(updateCountdown, 1000);
-  },
-
+  
+  
   handleGoPage: function () {
     const pagination = document.querySelector('.pagination-root');
     pagination.addEventListener("click", (e) => {
@@ -132,6 +124,7 @@ const app = {
       if (e.target.classList.contains("page-number") || e.target.parentNode.classList.contains("page-number")) {
         const pageNumber = e.target.innerText;
         this.query._page = pageNumber;
+        startCountdown();
       }
       if (e.target.classList.contains("page-prev")) {
         this.query._page -= 1;
@@ -148,6 +141,41 @@ const app = {
     this.handleGoPage();
   },
 };
+const countdownTimer = document.getElementById("countdown-timer");
+let timer;
+let timeLeft = 10; // Thời gian đếm ngược ban đầu (10 giây)
+let isCounting = false;
+
+function startCountdown() {
+  if (!isCounting) {
+    isCounting = true;
+    countdownTimer.textContent = `Thời gian còn lại: ${timeLeft} giây`;
+
+    timer = setInterval(() => {
+      timeLeft--;
+
+      if (timeLeft <= 0) {
+        clearInterval(timer);
+        autoClickNextPage(); // Tự động kích hoạt "Trang kế tiếp"
+        isCounting = false;
+        timeLeft = 10; // Reset the countdown timer
+        startCountdown(); // Bắt đầu đếm ngược lại
+      } else {
+        countdownTimer.textContent = `Thời gian còn lại: ${timeLeft} giây`;
+      }
+    }, 1000); // Cập nhật mỗi giây
+  }
+}
+
+function autoClickNextPage() {
+  const nextPageButton = document.querySelector('.page-next');
+  if (nextPageButton) {
+    nextPageButton.click();
+  }
+}
+
+// ...
+
 
 
 //Chạy app
