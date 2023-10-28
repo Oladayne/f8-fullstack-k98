@@ -1,72 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Trả lời câu hỏi từ API</title>
+  <title>Đăng ký tài khoản</title>
 </head>
 <body>
-    <div id="questions-container"></div>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const questionsContainer = document.getElementById('questions-container');
+  <h1>Đăng ký tài khoản</h1>
+  <form id="registration-form">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br><br>
 
-            // Function to load questions and answers from the API
-            function loadQuestionsFromAPI() {
-                // Replace 'your_api_endpoint' with the actual API endpoint
-                fetch('https://gnmyzm-8080.csb.app/questions')
-                    .then(response => response.json())
-                    .then(questions => {
-                        questions.forEach((question, index) => {
-                            createQuestionForm(question, index);
-                        });
-                    })
-                    .catch(error => console.error(error));
-            }
+    <label for="password">Mật khẩu:</label>
+    <input type="password" id="password" name="password" required><br><br>
 
-            // Function to create a form for a question
-            function createQuestionForm(question, index) {
-                const questionForm = document.createElement('form');
-                questionForm.innerHTML = `<h2>Câu hỏi ${index + 1}:</h2>
-                <p>${question.question}</p>
-                <ul>
-                    ${question.answers.map((answer, answerIndex) => `
-                        <li>
-                            <label>
-                                <input type="radio" name="answer${index}" value="${answerIndex}">
-                                ${answer.text}
-                            </label>
-                        </li>
-                    `).join('')}
-                </ul>
-                <button type="button" id="submit-button-${index}">Gửi câu trả lời</button>
-                <p id="result-${index}"></p>`;
+    <label for="name">Họ và tên:</label>
+    <input type="text" id="name" name="name" required><br><br>
 
-                questionsContainer.appendChild(questionForm);
+    <button type="button" id="register-button">Đăng ký</button>
+  </form>
 
-                const submitButton = document.getElementById(`submit-button-${index}`);
-                const resultElement = document.getElementById(`result-${index}`);
+  <p id="registration-status"></p>
 
-                submitButton.addEventListener('click', function() {
-                    const selectedAnswerIndex = document.querySelector(`input[name="answer${index}"]:checked`);
+  <script>
+    document.getElementById('register-button').addEventListener('click', function() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const name = document.getElementById('name').value;
 
-                    if (selectedAnswerIndex) {
-                        const selectedAnswer = selectedAnswerIndex.value;
-                        const selectedAnswerData = question.answers[selectedAnswer];
-
-                        // Here you can check if the selected answer is correct
-                        // based on the "is_correct" property of the selected answer
-                        if (selectedAnswerData.is_correct) {
-                            resultElement.textContent = 'Kết quả của bạn là đúng.';
-                        } else {
-                            resultElement.textContent = 'Kết quả của bạn là sai.';
-                        }
-                    } else {
-                        resultElement.textContent = 'Hãy chọn một câu trả lời trước khi gửi.';
-                    }
-                });
-            }
-
-            loadQuestionsFromAPI();
-        });
-    </script>
+      const registrationData = { email, password, name };
+      fetch('https://api-auth-two.vercel.app/auth/register ', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(registrationData),
+      })
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('registration-status').textContent = data.message;
+      })
+      .catch(error => {
+        console.error('Lỗi:', error);
+      });
+    });
+  </script>
 </body>
 </html>

@@ -1,0 +1,261 @@
+body{
+    background-image: linear-gradient(to bottom right, #BEEBF1, #F3ACCC);
+    height:100vh;
+    overflow: hidden;
+    font-family: monospace;
+}
+.container{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    width:400px;
+    height:90vh;
+    z-index: 1;
+}
+.container::before{
+    position: absolute;
+    bottom: 50%;
+    left:80%;
+    width:600px;
+    height:600px;
+    content:'';
+    background-image: linear-gradient(to top right, #B1BAF5, #C2ADF3);
+    border-radius: 50%;
+    z-index: -1;
+    animation: backgroundanimation 6s ease-in-out 2s infinite alternate;
+}
+.container::after{
+    position: absolute;
+    top: 50%;
+    right:60%;
+    width:400px;
+    height:400px;
+    content:'';
+    background-image: linear-gradient(to top right, #B1BAF5, #C2ADF3);
+    border-radius: 50%;
+    z-index: -1;
+    filter: blur(10px);
+    animation: backgroundanimation 5s ease-in-out infinite alternate;
+}
+@keyframes backgroundanimation{
+    from{
+        transform: translate(0,0);
+    }to{
+            transform: translate(0,100px);
+        }
+}
+.form{
+    background-color: rgb(239, 239, 239, 0.3);
+    width:100%;
+    height:100%;
+    border-radius: 30px;
+    overflow: hidden;
+    position: absolute;
+}
+.content{
+    width:100%;
+    padding:10%;
+    height:60%;
+    position: absolute;
+}
+h1{
+    color:#fff;
+    margin-bottom:50px;
+}
+button{
+    width:80%;
+    border:none;
+    margin-top:100px;
+    padding:15px 0;
+    position: absolute;
+    top:110%;
+    background-image: linear-gradient(to right, #90ABF4, #E697D5);
+    color:#fff;
+}
+.btn{
+    color: white;
+    padding:15px 0;
+}
+.group{
+    height:60px;
+    position: relative;
+    margin-bottom: 30px;
+}
+.group label{
+    position:absolute;
+    top: 11px;
+    left:10%;
+    transition: 0.5s;
+}
+.group .inputText{
+   
+    width:100%;
+    padding: 0 10%;
+    height:50px;
+    border:none;
+    outline: none;
+    background-color: rgb(255, 255, 255, 0.6);
+}
+.inputText:focus + label,
+.inputText:not(:placeholder-shown) + label
+{
+    top:-30px;
+    left:10%;
+}
+.inputText:valid{
+    border-bottom:1px solid #909fee;
+}
+input[type='checkbox'] + label{
+    position: unset;
+}
+.form-rotate{
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    overflow: hidden;
+    border-top-left-radius:30px;
+    border-top-right-radius:30px;
+    z-index: -1;
+
+}
+#rotate{
+     background-image: linear-gradient(to right, #909FEE, #D292F3);
+     width:500px;
+     height:500px;
+     border-radius: 30% 70% 70% 30% / 30% 43% 57% 70% ;
+     z-index: -1;
+     position: absolute;
+     top :-200px;
+     left:50%;
+     transform: translate(-50%);
+     transition: 1s;
+}
+.option{
+    position: absolute;
+    bottom:10px;width:70%;
+    left:50%;
+    transform: translate(-50%);
+}
+.changeType{
+    width:50%;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition:1s;
+    height:40px;
+}
+.bg-active{
+    position: absolute;
+    width:50%;
+    left:0;
+    transition: 1s;
+    background-color: #909FEE;
+    height:40px;
+    z-index: -1;
+    border-radius: 20px;
+}
+.changeType.active {
+    color:#fff;
+}
+.form.loginn .content:nth-child(1){
+    z-index: 1;
+    animation:nextContent 1s ease-in-out 1 forwards
+}
+.form.loginn .content:nth-child(2){
+    z-index: 1;
+    animation:outContent 1s ease-in-out 1 forwards
+}
+@keyframes nextContent{
+    from{
+        transform: translate(100%,0px);
+    }to{
+        transform: translate(0,0px);
+    }
+}
+@keyframes outContent{
+    from{
+        transform: translate(0,0px);
+    }to{
+        transform: translate(-100%,0px);
+    }
+}
+.form.register .content:nth-child(2){
+    z-index: 1;
+    animation:nextContent 1s ease-in-out 1 forwards
+}
+.form.register .content:nth-child(1){
+    z-index: 1;
+    animation:outContent 1s ease-in-out 1 forwards
+}
+.register .group span:not(.forpass span),
+.loginn .group span:not(.forpass span){
+    color: #777;
+    display: flex;
+    margin-right: 15px;
+    cursor: pointer;
+    top: 10%;
+}
+.register .group span ion-icon:nth-child(2),
+.loginn .group span ion-icon:nth-child(2){
+    display: none;
+}
+.register .group span.show ion-icon:nth-child(2),
+.loginn .group span.show ion-icon:nth-child(2){
+    display: block;
+}
+.register .group span.show ion-icon:nth-child(1),
+.loginn .group span.show ion-icon:nth-child(1){
+    display: none;
+}
+.forpass {
+    position: relative;
+    width: 100%;
+}
+.forpass span{
+    position: absolute;
+    right: -5px;
+    /* left: 10%; */
+    top: calc(100% - 50px);
+    transform: translateY(-55%);
+    margin: 20px;
+}
+.group .power-container{
+    margin-top: 5px;
+    background-color:#F3ACCC;
+    width:100%;
+    height:15px;
+    border-radius: 5px;
+    filter: blur(1px);
+}
+.group .power-container #power-point{
+    background-color: #f80000;
+    width:1%;
+    height: 100%;
+    border-radius: 5px;
+    transition: 0.5s;
+}
+.group .checkPass {
+    position: relative;
+    
+    height: 20px;
+    left: -10%;
+}
+.checkmini{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    height: 20px;
+}
+  
+.group .checkPass label div input{
+    width: 10px;
+    height: 10px;
+    background-color: #72D2CB;
+    margin-right: 20px;
+    margin-top: 5px;
+}
