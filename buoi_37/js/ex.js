@@ -6,7 +6,8 @@ client.setUrl(SERVER_API_AUTH);
 
 const app = {
   root: document.querySelector("#root"),
-  content: document.querySelector(".content"),
+  subLogin: document.querySelector(".sub-login"),
+  subSignup: document.querySelector(".sub-signup"),
   isLogin: function () {
     const status = localStorage.getItem("login_token") ? true : false;
 
@@ -17,10 +18,12 @@ const app = {
     let html;
 
     if (this.isLogin()) {
-      html = `<div class="container py-3">
+      html = `
+      
+      <div class="container py-3">
         <h2 class="text-center">Chào mừng bạn đã quay trở lại</h2>
         <ul class="profile list-unstyled d-flex gap-3">
-          <li>Chào bạn: <span class="name">Loading...</span></li>
+          <li>Chào bạn: <spanspan class="profile-name" id="profile-name">Loading...</spanspan></li>
           <li><a href="#" class="text-decoration-none logout">Đăng xuất</a></li>
         </ul>
       </div>`;
@@ -30,7 +33,8 @@ const app = {
       html = ` <div class="container">
         
       <div class="form loginn " id="form">
-          <form class="content login">
+          <form class="content sub-login login">
+          <p id="registration-status"></p>
               <h1>Login</h1>
               <div class="group">
                   <input type="email" id="username-login" name="email" class="form-control email inputText" placeholder="" required/>
@@ -51,18 +55,19 @@ const app = {
           </form>
 
 
-          <form class="content">
+          <form class="content sub-signup signup">
               <h1>Register</h1>
+              <p id="registration-status-signup"></p>
               <div class="group">
-                  <input type="text" id="username-reg" class="inputText" placeholder=" " required>
+                  <input type="text" id="name" class="inputText" placeholder=" " required>
                   <label for="username-reg">Username</label>
               </div>
               <div class="group">
-                  <input type="email" id="email-reg" class="inputText" placeholder=" " required>
+                  <input type="email" id="email" class="inputText" placeholder=" " required>
                   <label for="email-reg">Email</label>
               </div>
               <div class="group forpass">
-                  <input type="password" id="pass-reg" placeholder=" " required class="inputText">
+                  <input type="password" id="password" placeholder=" " required class="inputText">
                   <label for="pass-reg">Password</label>
                   <span id="showPassword">
                       <ion-icon name="eye-outline"></ion-icon>
@@ -104,6 +109,7 @@ const app = {
               <div id="rotate"></div>
           </div>
       </div>
+      <div id="registration-status"></div>
       <div class="option">
           <div class="bg-active" id="bg-active"></div>
           <div class="changeType active" id="login">Login</div>
@@ -124,7 +130,15 @@ const app = {
         const password = passwordEl.value;
         this.login({ email, password });
       }
+      if (e.target.classList.contains("signup")) {
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const name = document.getElementById('name').value;
+        this.signUp({ email, password ,name});
+      }
     });
+
+    
     this.root.addEventListener("click", (e) => {
       if (e.target.classList.contains("logout")) {
         e.preventDefault();
@@ -143,12 +157,12 @@ const app = {
     }
   },
   showError: function (msgText) {
-    const msg = this.root.querySelector(".loginn .msg");
+    const msg = this.root.querySelector("#registration-status");
     msg.innerText = ``;
     msg.innerText = msgText;
   },
   login: async function (data) {
-    this.loading(); //Thêm loading
+    this.loading();
     try {
       //Call API
       const { response, data: token } = await client.post("/auth/login", data);
@@ -157,52 +171,175 @@ const app = {
         throw new Error("Email hoặc mật khẩu không hợp lệ");
       }
       //Thêm token vào Storage (localStorage)
-      localStorage.setItem("login_token", JSON.stringify(token));
+      const accessToken = token.data;
+      localStorage.setItem("login_token", JSON.stringify(accessToken));
+      
+      
       //Render
       this.render();
     } catch (e) {
       this.showError(e.message);
     }
   },
-  getProfile: async function () {
+  
+  signUp: async function (data) {
+    this.loading();
     try {
-      let token = localStorage.getItem("login_token");
-      let accessToken;
+      const { response, data: userData }= await client.post("/auth/register", data);
 
-      if (token) {
-        accessToken = JSON.parse(token).access_token;
-      }
+        if (response.ok) {
+            // Lấy token từ phản hồi API
+            // Thay đổi dữ liệu trả về từ API nếu cần
+            // Lưu token vào LocalStorage (hoặc nơi lưu trữ khác)
+            
+            // Xóa trạng thái loading
+            this.loading(false);
 
-      if (!accessToken) {
-        throw new Error("accessToken not null");
-      }
+            // Xoá giá trị trên các trường nhập
+            nameEl.value = "";
+            passwordEl.value = "";
+            emailEl.value = "";
 
-      client.setToken(accessToken);
-      const { response, data: user } = await client.get("/auth/profile");
+            // Hiển thị thông báo thành công cho người dùng
+            document.getElementById('registration-status-signup').textContent = 'Đăng ký thành công';
+            
+            
+        } else {
+            // Xử lý trường hợp lỗi từ API
+            this.showError('Đã có lỗi xảy ra khi đăng ký.');
+        }
 
-      if (!response.ok) {
-        throw new Error("Unauthorize");
-      }
-
-      const profileEl = this.root.querySelector(".profile");
-      const profileName = profileEl.querySelector(".name");
-      profileName.innerText = user.name;
+        // Gọi hàm render hoặc thực hiện các hành động khác sau khi đăng ký thành công
+        this.render();
     } catch (e) {
-      if (e.message) {
-        this.logout();
+        // Xử lý lỗi nếu có lỗi xảy ra trong quá trình gọi API
+        this.showError('Có lỗi xảy ra khi đăng ký: ' + e.message);
+    }
+   
+},
+refreshToken: async function (setNewToken = false, callback = () => {}) {
+  try {
+     let userData = localStorage.getItem("login_token");
+     const refreshToken = JSON.parse(userData).refreshToken;
+     const { res, data: newToken } = await client.post("/auth/refresh-token", {
+        refreshToken: refreshToken,
+     });
+
+     if (!res.ok) {
+        this.refreshToken(setNewToken, callback);
+     }
+
+     const jsonToken = JSON.stringify(newToken.data.token);
+
+     localStorage.setItem("login_token", jsonToken);
+     callback();
+
+     if (setNewToken) {
+        const accessToken = newToken.data.token.accessToken;
+        client.setToken(accessToken);
+     }
+  } catch (error) {
+     console.log(error.message);
+     this.logout();
+  }
+},
+refreshAccessToken: async function () {
+  try {
+    const token = localStorage.getItem("login_token");
+    if (token) {
+      const refreshToken = JSON.parse(token).refreshToken;
+      const { res, data: newToken } = await client.post("/auth/refresh-token", {
+        refreshToken: refreshToken,
+      });
+
+      if (res.ok) {
+        // Lưu mã thông báo mới vào localStorage
+        localStorage.setItem("login_token", JSON.stringify(newToken.data.token));
+      } else {
+        // Xử lý trường hợp cập nhật thất bại
+        console.log("Cập nhật mã thông báo thất bại.");
       }
     }
+  } catch (error) {
+    console.log("Lỗi cập nhật mã thông báo: " + error.message);
+  }
+},
+  getProfile: async function () {
+    try {
+      const token = localStorage.getItem("login_token");
+      console.log(token);
+      if (token) {
+        
+        const accessToken = JSON.parse(token).accessToken;
+        console.log(accessToken);
+        // Đặt accessToken cho client
+        client.setToken(accessToken);
+  
+        // Gửi yêu cầu để lấy thông tin cá nhân của tài khoản
+        const { response, data: userData} = await client.get("/users/profile");
+  
+        if (response.ok) {
+          const profileName = this.root.querySelector("#profile-name");
+          if (profileName) {
+            profileName.textContent =userData.data.name; // Lấy tên từ dữ liệu và hiển thị lên giao diện
+            console.log(userData.data.name);
+          }
+        } else {
+          this.refreshToken(false, this.getProfile);
+            return;
+        }
+      }
+    } catch (error) {
+      console.error("Lỗi:", error);
+    }
   },
+
+  makeAuthorizedRequest:async function () {
+    const token = localStorage.getItem("login_token");
+    if (token) {
+      const accessToken = JSON.parse(token).accessToken;
+      // Kiểm tra xem mã thông báo có còn hiệu lực hay không
+      // Nếu còn hiệu lực, sử dụng nó cho yêu cầu
+      // Nếu hết hạn, gọi hàm cập nhật mã thông báo và sau đó sử dụng mã thông báo mới
+      const { response, data } = await client.get("/users/profile");
+  
+      if (!response.ok) {
+        // Mã thông báo hết hạn, cần cập nhật mã thông báo
+        this.refreshToken();
+        // Sau khi cập nhật, bạn có thể gọi lại yêu cầu ban đầu hoặc thực hiện các hành động khác
+      } else {
+        // Xử lý dữ liệu từ yêu cầu thành công
+        console.log("Dữ liệu từ yêu cầu thành công:", data);
+      }
+    } else {
+      // Không có mã thông báo, xử lý một cách thích hợp
+    }
+  },
+  
+  // Sử dụng hàm makeAuthorizedRequest cho yêu cầu bất kỳ
+  
   logout: function () {
     localStorage.removeItem("login_token");
     this.render();
   },
   start: function () {
-    //Khởi động ứng dụng
-    this.render();
+    // Kiểm tra mã thông báo hợp lệ trong local storage
+    const token = localStorage.getItem("login_token");
+    if (token) {
+      // Mã thông báo tồn tại, đặt nó cho client API của bạn
+      const accessToken = JSON.parse(token).accessToken;
+      client.setToken(accessToken);
+      // Hiển thị nội dung của người dùng đã xác thực hoặc nội dung khác
+      this.render();
+    } else {
+      // Không có mã thông báo hợp lệ, hiển thị biểu mẫu đăng nhập/đăng ký
+      this.render();
+    }
+    this.makeAuthorizedRequest();
     this.addEvent();
     this.getProfile();
   },
+  
 };
 
 app.start();
@@ -228,8 +365,8 @@ var rotateDeg = 0;
 let showPasswordLogin = document.getElementById('showPasswordLogin');
 let inputPasswordLogin = document.getElementById('pass-login');
 let showPassword = document.getElementById('showPassword');
-let inputPassword = document.getElementById('pass-reg');
-let password = document.getElementById('pass-reg');
+let inputPassword = document.getElementById('password');
+let password = document.getElementById('password');
 let power = document.getElementById('power-point');
 let checkboxes = document.querySelectorAll('.check-item');
 showPasswordLogin.onclick = function () {
