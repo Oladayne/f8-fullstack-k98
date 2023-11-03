@@ -28,7 +28,10 @@ export const client = {
     }
 
     const response = await fetch(url, options);
-
+    try {
+    } catch {
+      
+}
     const data = await response.json();
 
     return { response, data };
