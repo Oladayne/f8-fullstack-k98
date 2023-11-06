@@ -22,8 +22,32 @@ const app = {
 
     return status;
   },
+  renderBlogs: function () {
+    let Html;
+    Html = `
+    <div class="posts">
+      <div class="user-profile-box">
+        <div class="user-profile">
+            <img src="https://i.pinimg.com/564x/68/4e/81/684e814ad4e496feab27302d9bec33d2.jpg" alt="">
+            <div>
+                <p class="name-user">bài vdvd</p>
+                <small class="time-post">time-post</small>
+            </div>
+        </div>
+        <div>
+            <a href="#"><i class="fas fa-ellipsis-v"></i></a>
+        </div>
+    </div>
+    <div class="status-post">
+        <p class="contenr-post">content </p>
+        <img class="image-post" src="" alt="">
+
+    </div>
+    
+    </div>
+    `
+  },
   render: function () {
-    console.log("re-render");
     let html;
 
     if (this.isLogin()) {
@@ -51,11 +75,31 @@ const app = {
             <input type="date" class="form-control date">
           </div>
           <div class="mb-3">
-            <button class="btnContent btn-primary" type="submit">Write new</button>
+            <button class="btnContent btn-primary">Write new</button>
           </div>
         </form>
       </div>
-      </div>`;
+      </div>
+      <div class="posts">
+      <div class="user-profile-box">
+        <div class="user-profile">
+            <img src="https://i.pinimg.com/564x/68/4e/81/684e814ad4e496feab27302d9bec33d2.jpg" alt="">
+            <div>
+                <p class="name-user">bài vdvd</p>
+                <small class="time-post">time-post</small>
+            </div>
+        </div>
+        <div>
+            <a href="#"><i class="fas fa-ellipsis-v"></i></a>
+        </div>
+    </div>
+    <div class="status-post">
+        <p class="contenr-post">content </p>
+        <img class="image-post" src="" alt="">
+
+    </div>
+    
+    </div>`;
 
       this.getProfile();
     } else {
@@ -144,7 +188,27 @@ const app = {
           <div class="changeType active" id="login">Login</div>
           <div class="changeType" id="register">Register</div>
       </div>
-  </div>`;
+  </div>
+  <div class="posts">
+      <div class="user-profile-box">
+        <div class="user-profile">
+            <img src="https://i.pinimg.com/564x/68/4e/81/684e814ad4e496feab27302d9bec33d2.jpg" alt="">
+            <div>
+                <p class="name-user">bài vdvd</p>
+                <small class="time-post">time-post</small>
+            </div>
+        </div>
+        <div>
+            <a href="#"><i class="fas fa-ellipsis-v"></i></a>
+        </div>
+    </div>
+    <div class="status-post">
+        <p class="contenr-post">content </p>
+        <img class="image-post" src="" alt="">
+
+    </div>
+    
+    </div>`;
       setTimeout(() => {
         this.eventLy()
       }, 0);
@@ -186,7 +250,7 @@ const app = {
         const contentEl = document.querySelector(".content");
         const title = titleEl.value;
         const content = contentEl.value;
-        this.PostContent({content,title})
+        this.PostContent({title,content})
       }
     })
     
@@ -197,28 +261,33 @@ const app = {
       }
     });
   },
-  PostContent: async function () {
-    this.loadingBtn();
+  PostContent: async function (data) {
+    console.log(data);
+    const writeNew=  document.querySelector(".btnContent")
+    this.loadingBtn(true, writeNew)
     try {
-      const { response, data: userData } = await client.post("/blogs/post", data);
+      const { response, data: userData } = await client.post("/blogs", data);
+      console.log(data);
       if (response.ok) {
 
-        const { title: titleEl, content: contentEl } = data;
-        titleEl.value = "";
-        contentEl.value = "";
-        console.log("gửi Ok");
+        this.loadingBtn(false,writeNew)
       } else {
         this.showError("lỗi gửi đi")
       }
       this.render();
-    } catch {
-      this.showError('Có lỗi xảy ra khi post bài : ' + e.message);
+    } catch(e) {
+      this.showError('Có lỗi xảy ra khi đăng ký: ' + e.message);
     }
   },
   showError: function (msgText) {
-    const msg = this.root.querySelector("#registration-status");
-    msg.innerText = ``;
-    msg.innerText = msgText;
+    const element = document.getElementById('#registration-status'); 
+
+if (element !== null) {
+  element.innerText = ``;
+  element.innerText = msgText;
+} else {
+  console.log("lỗi ko có phần tử");
+}
   },
   login: async function (data) {
     this.loadingBtn();
