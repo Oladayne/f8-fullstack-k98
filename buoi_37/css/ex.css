@@ -12,6 +12,7 @@ body{
     width:400px;
     height:90vh;
     z-index: 1;
+    left: 80%;
 }
 .containerr{
     position: absolute;
@@ -1013,4 +1014,71 @@ img.coverImage {
     border-radius: 5px;
     display: none; /* Ẩn ban đầu */
   }
-  
+  .window-scroll{
+    overflow-y: auto;
+    max-width: 50%;
+    height: 100vh;
+    overflow-x: hidden;
+  }
+  .window-scroll::-webkit-scrollbar{
+    display: none;
+}
+  .posts{
+    z-index: 99;
+    position: relative;
+    width: auto;
+    height: fit-content;
+    background-color: rgba(201, 201, 201, 0);
+    border: 1px solid rgba(124, 124, 124, 0.089);
+    padding: 20px ;
+    margin: 20px;
+    border-radius: 15px;
+    max-width: 90%;
+    left: 5.5%;
+  }
+  .name-user a{
+    color: black;
+    text-decoration: none;
+  }
+  .name-user a:hover{
+    color: gray;
+    border-bottom: 1px solid gray;
+  }
+  .status-post p:nth-child(1){
+    font-size: larger;
+    font-weight: 600;
+    font-style: italic;
+  }
+  .contenr-post{
+   max-width: 80%;
+   word-break: break-all;
+    font-style:unset;
+  }
+  .logout{
+    width: 80px;
+    height: 60px;
+    background-color:#90ABF4;
+    padding: 10px;
+    border: 1px solid rgba(128, 128, 128, 0.295) ;
+    border-radius: 99px;
+    color: white;
+    font-size: 15px;
+  }
+  .logout:hover{
+    background-color: #909FEE;
+  }
+ .text-center{
+    font-style:oblique;
+    font-weight: 800;
+    text-shadow: 2px 2px #909fee;
+ }
+.containation{
+    width: 400px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.title-3 {
+    width: 100%;
+}

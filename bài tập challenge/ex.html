@@ -1,48 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Đăng ký tài khoản</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 <body>
-  <h1>Đăng ký tài khoản</h1>
-  <form id="registration-form">
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required><br><br>
-
-    <label for="password">Mật khẩu:</label>
-    <input type="password" id="password" name="password" required><br><br>
-
-    <label for="name">Họ và tên:</label>
-    <input type="text" id="name" name="name" required><br><br>
-
-    <button type="button" id="register-button">Đăng ký</button>
-  </form>
-
-  <p id="registration-status"></p>
-
-  <script>
-    document.getElementById('register-button').addEventListener('click', function() {
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-      const name = document.getElementById('name').value;
-
-      const registrationData = { email, password, name };
-      fetch('https://api-auth-two.vercel.app/auth/register ', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(registrationData),
-      })
-      .then(response => response.json())
-      .then(data => {
-        document.getElementById('registration-status').textContent = data.message;
-      })
-      .catch(error => {
-        console.error('Lỗi:', error);
-      });
-    });
-    
-  </script>
+  <div class="posts">
+    <div class="user-profile-box">
+      <div class="user-profile">
+          <img src="https://i.pinimg.com/564x/68/4e/81/684e814ad4e496feab27302d9bec33d2.jpg" alt="">
+          <p>Hùng</p>
+          <div >
+              <p class="name-user">Giang hồ </p>
+              <small class="time-post">adsasd</small>
+          </div>
+      </div>
+      <div>
+          <a href="#"><i class="fas fa-ellipsis-v"></i></a>
+      </div>
+  </div>
+  <div class="status-post">
+      <p class="contenr-post">yên Sở </p>
+      <img class="image-post" src="" alt="">
+      <span>ádasda</span>
+  </div>
+ 
+  </div>
 </body>
 </html>
