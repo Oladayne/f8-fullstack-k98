@@ -6,8 +6,11 @@ client.setUrl(SERVER_API_AUTH);
 let limit = 1;
 const app = {
   root: document.querySelector("#root"),
+
   subLogin: document.querySelector(".sub-login"),
   subSignup: document.querySelector(".sub-signup"),
+  showForm: document.querySelector(".sg-in"),
+  modalEl: document.querySelector(".container-5"),
   isLogin: function () {
     let token = localStorage.getItem("login_token");
     let accessToken;
@@ -31,7 +34,7 @@ const app = {
       <div class="user-profile-box">
         <div class="user-profile">
             <img src="https://i.pinimg.com/564x/68/4e/81/684e814ad4e496feab27302d9bec33d2.jpg" alt="">
-            <div >
+            <div> 
                 <p class="name-user"> <a href="">${userId.name}</a></p>
                 <small class="time-post">${timeUp}</small>
             </div>
@@ -41,7 +44,7 @@ const app = {
         </div>
     </div>
     <div class="status-post">
-        <p>${title}</p>
+        <p class="title-post-content">${title}</p>
         <p class="contenr-post">${content} </p>
         <img class="image-post" src="" alt="">
         <span>${moment(timeUp).fromNow()}</span>
@@ -79,10 +82,10 @@ const app = {
           </div>
           <div class="mb-3 date-3">
             <label for="">Set time to post</label>
-            <input type="date" class="form-control date">
+            <input type="date" id="datePicker" class="form-control date">
           </div>
           <div class="mb-3 button-3">
-            <button class="btnContent btn-primary">Write new</button>
+            <button class="btnContent btn-primary" id="checkButton">Write new</button>
           </div>
         </form>
       </div>
@@ -90,8 +93,10 @@ const app = {
 
       this.getProfile();
     } else {
-      html = ` <div class="container">
-        
+      html = `
+      <button class="sg-in"> Đăng nhập</button>
+      <div class="container form-lg">
+     
       <div class="form loginn " id="form">
           <form class="content sub-login login">
           <p id="registration-status"></p>
@@ -226,6 +231,12 @@ const app = {
         e.preventDefault();
         this.logout();
       }
+      if (e.target.classList.contains(".sg-in")) {
+        e.preventDefault();
+        document.querySelector(".loginn").style.display = "block";
+        document.querySelector(".option").style.display = "block";
+        document.querySelector(".sg-in").style.display = "none";
+      }
     });
     // this.root.addEventListener("click", (e) => {
     //   e.target.classList.contains("posts");
@@ -238,7 +249,7 @@ const app = {
     this.loadingBtn(true, writeNew);
     try {
       const { response, data: userData } = await client.post("/blogs", data);
-      this.renderBlogs([userData.data],`afterbegin`);
+      this.renderBlogs([userData.data], `afterbegin`);
       if (response.ok) {
         this.loadingBtn(false, writeNew);
       } else {
@@ -248,13 +259,31 @@ const app = {
     } catch (e) {
       this.showError("Có lỗi xảy ra khi đăng ký: " + e.message);
     }
+    const datePicker = flatpickr("#datePicker", {
+      enableTime: true, // Cho phép chọn cả thời gian
+      dateFormat: "Y-m-d H:i", // Định dạng thời gian
+     
+  });
+
+  const checkButton = document.getElementById("checkButton");
+
+  checkButton.addEventListener("click", function() {
+      const selectedDate = new Date(datePicker.selectedDates[0]);
+      const currentDate = new Date();
+    if (selectedDate.getTime() !== currentDate.getTime()) {
+        
+          alert("Thời gian đã chọn khác với thời gian hiện tại.");
+          // Làm mới trường input
+          datePicker.clear();
+      }
+  });
   },
   showError: function (msgText) {
     const element = document.getElementById("registration-status");
 
     if (element !== null) {
       element.innerText = ``;
-      element.innerText = msgText;      
+      element.innerText = msgText;
     } else {
       console.log("đã được gửi đi");
     }
@@ -286,6 +315,7 @@ const app = {
     let password = document.getElementById("password");
     let power = document.getElementById("power-point");
     let checkboxes = document.querySelectorAll(".check-item");
+
     showPasswordLogin.onclick = function () {
       console.log("ngon1");
       if (inputPasswordLogin.type == "password") {
@@ -306,7 +336,11 @@ const app = {
         showPassword.classList.remove("show");
       }
     };
-
+    document.querySelector(".sg-in").addEventListener("click", function () {
+      document.querySelector(".loginn").style.display = "block";
+      document.querySelector(".option").style.display = "block";
+      document.querySelector(".sg-in").style.display = "none";
+    });
     options.forEach((val) => {
       val.addEventListener("click", function (event) {
         if (this.classList.contains("active")) {
@@ -325,6 +359,7 @@ const app = {
           "translate(-50%) rotate(" + rotateDeg + "deg)";
       });
     });
+
     document.addEventListener("DOMContentLoaded", function () {
       let checkboxes = document.querySelectorAll(".check-item");
 
@@ -488,7 +523,6 @@ const app = {
     } else {
     }
   },
-
   logout: function () {
     const { response, data: token } = client.post("/auth/logout");
     localStorage.removeItem("login_token");
@@ -521,6 +555,49 @@ const app = {
 
     elementDiv.addEventListener("scroll", eventScrollLoad);
   },
+  handleShowDetail: function () {
+    let postId = null;
+    const rootEl = document.querySelector(".window-scroll");
+    rootEl.addEventListener("click", (e) => {
+      const postItem = e.target.closest(".posts");
+
+      if (postItem) {
+        const title = postItem.querySelector(".title-post-content");
+        const content = postItem.querySelector(".contenr-post");
+        if (title && content) {
+          this.modalEl.classList.remove("hide");
+
+          const titleModal = this.modalEl.querySelector(".title-5");
+          const bodyModal = this.modalEl.querySelector(".Vb");
+          titleModal.innerHTML = title.innerHTML;
+          bodyModal.innerHTML = content.innerHTML;
+        }
+      }
+    });
+  },
+  handleCloseModal: function () {
+    const closeBtn = document.querySelector(".close")
+    closeBtn.addEventListener("click", () => {
+      this.modalEl.classList.add("hide");
+      const titleModal = this.modalEl.querySelector(".title-5");
+      const bodyModal = this.modalEl.querySelector(".Vb");
+      titleModal.innerHTML = "";
+      bodyModal.innerHTML = "";
+    });
+  },
+  getPostDetail: async function (id) {
+    const { data: post, response } = await client.get(`/:blogId/${id}`);
+    const titleEl = this.modalEl.querySelector(".modal-title");
+    const bodyEl = this.modalEl.querySelector(".modal-body");
+    if (response.ok) {
+      const { title, content } = post;
+      titleEl.innerHTML = title;
+      bodyEl.innerHTML = content;
+    } else {
+      titleEl.innerHTML = `404 NOT FOUND`;
+      bodyEl.innerHTML = `không tìm thấy bài`;
+    }
+  },
   start: async function () {
     this.makeDiv();
     const token = localStorage.getItem("login_token");
@@ -536,6 +613,8 @@ const app = {
     this.getProfile();
     await this.fetchData();
     this.handleScrollLoad();
+    this.handleShowDetail();
+    this.handleCloseModal();
   },
 };
 
